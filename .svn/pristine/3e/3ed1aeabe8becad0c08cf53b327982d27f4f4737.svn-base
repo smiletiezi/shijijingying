@@ -1,0 +1,26 @@
+
+aes_key=G9IgehohcbSip2
+
+############  保存文件的路径############
+#file_upload_path=E:\\jzmb\\file\\
+file_upload_path=E:\\shijijingying\\file\\
+############  保存文件大小 （10M）  ############
+file_upload_size=10485760
+
+############  保存文件大小 （4G）  ############
+file_upload_size_big=4294967296
+
+############  保存文件路径的前缀   ############
+#attachment_path = http://192.168.2.157:8080/jzmb/file/
+attachment_path = http://127.0.0.1:8080/shijijingying/file/
+############手机不拦截接口地址 ############
+mobile_pass_uri=/login/password
+
+init_password=123456
+
+portal_path = http://192.168.2.157:8080/
+
+
+SMS_verification =\u77ed\u4fe1\u9a8c\u8bc1\u7801\u4e3a\u0040
+
+Service_tel =110

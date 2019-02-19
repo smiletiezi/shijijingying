@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.BoxinUserMapper">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.BoxinUser">
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userNumber" jdbcType="VARCHAR" property="usernumber" />
+    <result column="userAccount" jdbcType="VARCHAR" property="useraccount" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userBusinessName" jdbcType="VARCHAR" property="userbusinessname" />
+    <result column="userPhoneNumber" jdbcType="VARCHAR" property="userphonenumber" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userpassword" />
+    <result column="userGrourId" jdbcType="VARCHAR" property="usergrourid" />
+    <result column="userCreationTime" jdbcType="VARCHAR" property="usercreationtime" />
+    <result column="userDutyNumber" jdbcType="VARCHAR" property="userdutynumber" />
+    <result column="userBank" jdbcType="VARCHAR" property="userbank" />
+    <result column="userBankNumber" jdbcType="VARCHAR" property="userbanknumber" />
+    <result column="userAddress" jdbcType="VARCHAR" property="useraddress" />
+    <result column="userPushType" jdbcType="INTEGER" property="userpushtype" />
+    <result column="userPushRegistrationId" jdbcType="VARCHAR" property="userpushregistrationid" />
+    <result column="userBalance" jdbcType="DOUBLE" property="userbalance" />
+    <result column="penNumber" jdbcType="INTEGER" property="pennumber" />
+    <result column="pigNumber" jdbcType="INTEGER" property="pignumber" />
+    <result column="personal" jdbcType="INTEGER" property="personal" />
+    <result column="userImg" jdbcType="VARCHAR" property="userimg" />
+    <result column="insurance" jdbcType="VARCHAR" property="insurance" />
+    <result column="businessRemark" jdbcType="VARCHAR" property="businessremark" />
+    <result column="feedBack" jdbcType="VARCHAR" property="feedback" />
+    <result column="sphere" jdbcType="VARCHAR" property="sphere" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="drawNum" jdbcType="INTEGER" property="drawnum" />
+    <result column="year" jdbcType="DOUBLE" property="year" />
+    <result column="month" jdbcType="DOUBLE" property="month" />
+  </resultMap>
+    <sql id="Base_Column_List">  
+        userId,
+        userNumber,
+        userAccount,
+         userName,
+         userBusinessName,
+         userPhoneNumber,
+         userPassword,
+         userGrourId,
+         userCreationTime,
+         userDutyNumber,
+         userBank,
+         userBankNumber,
+         userAddress,
+         userPushType,
+         userPushRegistrationId,
+         userBalance,
+         penNumber,
+         pigNumber,
+         personal,
+         userImg,
+         insurance,
+         businessRemark,
+         feedBack,
+         sphere,
+         remark,
+         drawNum,
+         year,
+         month  
+    </sql>  
+  
+    <!-- 查询用户-->  
+    <select id="queryByPrimaryKey" resultMap="BaseResultMap"  
+        parameterType="java.lang.Integer">  
+        select  
+        <include refid="Base_Column_List" />  
+        from user  
+        where userId = #{userid,jdbcType=INTEGER}  
+    </select>  
+    
+    <!-- 查询用户-->  
+    <select id="getAllUser" resultMap="BaseResultMap">  
+        select  
+        <include refid="Base_Column_List" />  
+        from user  
+    </select>
+      
+    <!-- 批量查询用户-->  
+    <select id="queryUserByBatch" resultMap="BaseResultMap"  
+        parameterType="java.util.Map">  
+        select  
+        <include refid="Base_Column_List" />  
+        from user  
+        where userId in  
+        <foreach collection="idList" item="userId" index="index" open="(" separator="," close=")">  
+             #{userid,jdbcType=DECIMAL}  
+        </foreach>  
+    </select>  
+      
+    <!-- 插入用户 -->  
+    <insert id="insertUser" parameterType="com.py.shijijingying.entity.BoxinUser">  
+        insert into user    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="userid != null" >    
+            userId,    
+          </if>
+          <if test="usernumber != null" >    
+            userNumber,    
+          </if>
+          <if test="useraccount != null" >    
+            userAccount,    
+          </if>    
+          <if test="username != null" >    
+            userName,    
+          </if>        
+          <if test="userbusinessname != null" >    
+            userBusinessName,    
+          </if>
+          <if test="userphonenumber != null" >    
+            userPhoneNumber,    
+          </if>
+          <if test="userpassword != null" >    
+            userPassword,    
+          </if>
+          <if test="usergrourid != null" >    
+            userGrourId,    
+          </if>
+          <if test="usercreationtime != null" >    
+            userCreationTime,    
+          </if>
+          <if test="userdutynumber != null" >    
+            userDutyNumber,    
+          </if>
+          <if test="userbank != null" >    
+            userBank,    
+          </if>
+          <if test="userbanknumber != null" >    
+            userBankNumber,    
+          </if>
+          <if test="useraddress != null" >    
+            userAddress,    
+          </if>
+          <if test="userpushtype != null" >    
+            userPushType,    
+          </if>
+          <if test="userpushregistrationid != null" >    
+            userPushRegistrationId,    
+          </if>
+          <if test="userbalance != null" >    
+            userBalance,    
+          </if>
+          <if test="pennumber != null" >    
+            penNumber,    
+          </if>
+          <if test="pignumber != null" >    
+            pigNumber,    
+          </if>
+          <if test="personal != null" >    
+            personal    
+          </if>
+          <if test="userimg != null" >    
+            userImg    
+          </if>
+          <if test="insurance != null" >    
+            insurance    
+          </if>
+          <if test="businessremark != null" >    
+            businessRemark    
+          </if>
+          <if test="feedback != null" >    
+            feedBack    
+          </if>
+          <if test="sphere != null" >    
+            sphere    
+          </if>
+          <if test="remark != null" >    
+            remark    
+          </if>
+          <if test="drawnum != null" >    
+            drawNum,    
+          </if>
+          <if test="year != null" >    
+            year,   
+          </if>
+          <if test="month != null" >    
+            month    
+          </if>     
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="userid != null" >    
+            #{userid,jdbcType=INTEGER},    
+          </if>
+          <if test="usernumber != null" >    
+            #{usernumber,jdbcType=VARCHAR},    
+          </if> 
+          <if test="useraccount != null" >    
+            #{useraccount,jdbcType=VARCHAR},    
+          </if>   
+          <if test="username != null" >    
+            #{username,jdbcType=VARCHAR},    
+          </if>        
+          <if test="userbusinessname != null" >    
+            #{userbusinessname,jdbcType=VARCHAR},    
+          </if>
+          <if test="userphonenumber != null" >    
+            #{userphonenumber,jdbcType=VARCHAR},    
+          </if>
+          <if test="userpassword != null" >    
+            #{userpassword,jdbcType=VARCHAR},    
+          </if>
+          <if test="usergrourid != null" >    
+            #{usergrourid,jdbcType=VARCHAR},    
+          </if>
+          <if test="usercreationtime != null" >    
+            #{usercreationtime,jdbcType=VARCHAR},    
+          </if>
+          <if test="userdutynumber != null" >    
+            #{userdutynumber,jdbcType=VARCHAR},    
+          </if>
+          <if test="userbank != null" >    
+            #{userbank,jdbcType=VARCHAR},    
+          </if>
+          <if test="userbanknumber != null" >    
+            #{userbanknumber,jdbcType=VARCHAR},    
+          </if>
+          <if test="useraddress != null" >    
+            #{useraddress,jdbcType=VARCHAR},    
+          </if>
+          <if test="userpushtype != null" >    
+            #{userpushtype,jdbcType=INTEGER},    
+          </if>
+          <if test="userpushregistrationid != null" >    
+            #{userpushregistrationid,jdbcType=VARCHAR},    
+          </if>
+          <if test="userbalance != null" >    
+            #{userbalance,jdbcType=DOUBLE},    
+          </if>
+          <if test="pennumber != null" >    
+            #{pennumber,jdbcType=INTEGER},    
+          </if>
+          <if test="pignumber != null" >    
+            #{pignumber,jdbcType=INTEGER},    
+          </if>
+          <if test="personal != null" >    
+            #{personal,jdbcType=INTEGER}    
+          </if>
+          <if test="userimg != null" >    
+            #{userimg,jdbcType=VARCHAR},    
+          </if>
+          <if test="insurance != null" >    
+            #{insurance,jdbcType=VARCHAR},    
+          </if>
+          <if test="businessremark != null" >    
+            #{businessremark,jdbcType=VARCHAR},    
+          </if>
+          <if test="feedback != null" >    
+            #{feedback,jdbcType=VARCHAR},    
+          </if>
+          <if test="sphere != null" >    
+            #{sphere,jdbcType=VARCHAR},    
+          </if>
+          <if test="remark != null" >    
+            #{remark,jdbcType=VARCHAR},    
+          </if>
+          <if test="drawnum != null" >    
+            #{drawnum,jdbcType=INTEGER},    
+          </if>
+          <if test="year != null" >    
+            #{year,jdbcType=DOUBLE},    
+          </if>
+          <if test="month != null" >    
+            #{month,jdbcType=DOUBLE}    
+          </if>     
+        </trim>     
+    </insert>  
+      
+    <!-- 批量插入用户 -->  
+    <insert id="insertUserByBatch" parameterType="java.util.List" >  
+    insert into user  
+       (userId,
+       userNumber,
+       userAccount,
+       userName, 
+       userBusinessName,
+       userPhoneNumber,
+       userPassword,
+       userGrourId,
+       userCreationTime,
+       userDutyNumber,
+       userBank,
+       userBankNumber,
+       userAddress,
+       userPushType,
+       userPushRegistrationId,
+       userBalance,
+       penNumber,
+       pigNumber,
+       personal,
+       userImg,
+       insurance,
+       businessRemark,
+       feedBack,
+       sphere,
+       remark,
+       drawNum,
+       year,
+       month)  
+    select A.* from  
+         (  
+         <foreach collection="list" item="user" index="index" separator="union">  
+             select   
+             #{user.userid,jdbcType=INTEGER},
+             #{user.usernumber,jdbcType=VARCHAR},
+             #{user.useraccount,jdbcType=VARCHAR},  
+             #{user.username,jdbcType=VARCHAR},
+             #{user.userbusinessname,jdbcType=VARCHAR},
+             #{user.userphonenumber,jdbcType=VARCHAR},
+             #{user.userpassword,jdbcType=VARCHAR},
+             #{user.usergrourid,jdbcType=VARCHAR},
+             #{user.usercreationtime,jdbcType=VARCHAR},
+             #{user.userdutynumber,jdbcType=VARCHAR},
+             #{user.userbank,jdbcType=VARCHAR},
+             #{user.userbanknumber,jdbcType=VARCHAR},
+             #{user.useraddress,jdbcType=VARCHAR},
+             #{user.userpushtype,jdbcType=INTEGER},
+             #{user.userpushregistrationid,jdbcType=VARCHAR},
+             #{user.userbalance,jdbcType=DOUBLE},
+              #{user.pennumber,jdbcType=INTEGER},
+              #{user.pignumber,jdbcType=INTEGER},
+              #{user.personal,jdbcType=INTEGER},
+              #{user.userimg,jdbcType=VARCHAR},
+              #{user.insurance,jdbcType=VARCHAR},
+              #{user.businessremark,jdbcType=VARCHAR},
+              #{user.feedback,jdbcType=VARCHAR},
+              #{user.sphere,jdbcType=VARCHAR},
+              #{user.remark,jdbcType=VARCHAR},
+              #{user.drawnum,jdbcType=INTEGER},
+              #{user.year,jdbcType=DOUBLE},
+              #{user.month,jdbcType=DOUBLE} 
+              from dual  
+         </foreach>  
+         ) A  
+    </insert>  
+  
+    <!-- 删除用户 -->  
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">  
+        delete from user  
+        where userId = #{userid,jdbcType=INTEGER}    
+    </delete>  
+      
+    <!-- 批量删除用户 -->  
+    <delete id="deleteUserByBatch" parameterType="java.util.Map" >  
+     delete from user  
+     where userId IN   
+         <foreach item="ids" collection="iList" open="(" separator="," close=")">  
+             #{ids,jdbcType=DECIMAL}  
+         </foreach>  
+    </delete>  
+  
+  <select id="selectByPrimary" parameterType="com.py.shijijingying.entity.BoxinUser"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+     where 1=1
+    <if test="userid != null">
+      and userId = #{userid,jdbcType=INTEGER}
+    </if>
+    <if test="usernumber != null">
+      and userNumber = #{usernumber,jdbcType=VARCHAR}
+    </if>
+    <if test="useraccount != null">
+      and userAccount = #{useraccount,jdbcType=VARCHAR}
+    </if>
+    <if test="username != null">
+      and userName = #{username,jdbcType=VARCHAR}
+    </if>
+    <if test="userbusinessname != null">
+      and userBusinessName = #{userbusinessname,jdbcType=VARCHAR}
+    </if>
+    <if test="userphonenumber != null">
+      and userPhoneNumber = #{userphonenumber,jdbcType=VARCHAR}
+    </if>
+    <if test="userpassword != null">
+      and userPassword = #{userpassword,jdbcType=VARCHAR}
+    </if>
+    <if test="usergrourid != null">
+      and userGrourId = #{usergrourid,jdbcType=VARCHAR}
+    </if>
+    <if test="usercreationtime != null">
+      and userCreationTime = #{usercreationtime,jdbcType=VARCHAR}
+    </if>
+    <if test="userdutynumber != null">
+      and userDutyNumber = #{userdutynumber,jdbcType=VARCHAR}
+    </if>
+    <if test="userbank != null">
+      and userBank = #{userbank,jdbcType=VARCHAR}
+    </if>
+    <if test="userbanknumber != null">
+      and userBankNumber = #{userbanknumber,jdbcType=VARCHAR}
+    </if>
+    <if test="useraddress != null">
+      and userAddress = #{useraddress,jdbcType=VARCHAR}
+    </if>
+    <if test="userpushtype != null">
+      and userPushType = #{userpushtype,jdbcType=INTEGER}
+    </if>
+    <if test="userpushregistrationid != null">
+      and userPushRegistrationId = #{userpushregistrationid,jdbcType=VARCHAR}
+    </if>
+    <if test="userbalance != null">
+      and userBalance = #{userbalance,jdbcType=DOUBLE}
+    </if>
+    <if test="pennumber != null">
+      and penNumber = #{pennumber,jdbcType=INTEGER}
+    </if>
+    <if test="pignumber != null">
+      and pigNumber = #{pignumber,jdbcType=INTEGER}
+    </if>
+    <if test="personal != null">
+      and personal = #{personal,jdbcType=INTEGER}
+    </if>
+    <if test="userimg != null" >    
+         and  userImg= #{userimg,jdbcType=VARCHAR}    
+    </if>
+     <if test="insurance != null" >    
+       and  insurance=  #{insurance,jdbcType=VARCHAR}    
+     </if>
+     <if test="businessremark != null" >    
+        and  businessRemark=  #{businessremark,jdbcType=VARCHAR}   
+      </if>
+       <if test="feedback != null" >    
+         and feedBack= #{feedback,jdbcType=VARCHAR}    
+       </if>
+       <if test="sphere != null" >    
+         and sphere= #{sphere,jdbcType=VARCHAR}    
+       </if>
+       <if test="remark != null" >    
+         and remark= #{remark,jdbcType=VARCHAR}    
+       </if>
+       <if test="drawnum != null" >    
+         and drawNum=  #{drawnum,jdbcType=INTEGER}    
+       </if>
+       <if test="year != null">
+      and year = #{year,jdbcType=DOUBLE}
+    </if>
+    <if test="month != null">
+      and month = #{month,jdbcType=DOUBLE}
+    </if>     
+  </select>
+  
+    <!-- 更新用户 -->  
+    <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.BoxinUser" >    
+        update user    
+        <set >
+        <if test="usernumber != null">
+       userNumber = #{usernumber,jdbcType=VARCHAR},
+    </if>
+    <if test="useraccount != null">
+       userAccount = #{useraccount,jdbcType=VARCHAR},
+    </if>
+    <if test="username != null">
+       userName = #{username,jdbcType=VARCHAR},
+    </if>
+    <if test="userbusinessname != null">
+       userBusinessName = #{userbusinessname,jdbcType=VARCHAR},
+    </if>
+    <if test="userphonenumber != null">
+       userPhoneNumber = #{userphonenumber,jdbcType=VARCHAR},
+    </if>
+    <if test="userpassword != null">
+       userPassword = #{userpassword,jdbcType=VARCHAR},
+    </if>
+    <if test="usergrourid != null">
+       userGrourId = #{usergrourid,jdbcType=VARCHAR},
+    </if>
+    <if test="usercreationtime != null">
+       userCreationTime = #{usercreationtime,jdbcType=VARCHAR},
+    </if>
+    <if test="userdutynumber != null">
+       userDutyNumber = #{userdutynumber,jdbcType=VARCHAR},
+    </if>
+    <if test="userbank != null">
+       userBank = #{userbank,jdbcType=VARCHAR},
+    </if>
+    <if test="userbanknumber != null">
+       userBankNumber = #{userbanknumber,jdbcType=VARCHAR},
+    </if>
+    <if test="useraddress != null">
+       userAddress = #{useraddress,jdbcType=VARCHAR},
+    </if>
+    <if test="userpushtype != null">
+       userPushType = #{userpushtype,jdbcType=INTEGER},
+    </if>
+    <if test="userpushregistrationid != null">
+       userPushRegistrationId = #{userpushregistrationid,jdbcType=VARCHAR},
+    </if>
+    <if test="userbalance != null">
+       userBalance = #{userbalance,jdbcType=DOUBLE},
+    </if>
+    <if test="pennumber != null">
+       penNumber = #{pennumber,jdbcType=INTEGER},
+    </if>
+    <if test="pignumber != null">
+       pigNumber = #{pignumber,jdbcType=INTEGER},
+    </if>
+    <if test="personal != null">
+       personal = #{personal,jdbcType=INTEGER},
+    </if>
+    <if test="userimg != null" >    
+          userImg= #{userimg,jdbcType=VARCHAR},   
+    </if>
+     <if test="insurance != null" >    
+         insurance=  #{insurance,jdbcType=VARCHAR},    
+     </if>
+     <if test="businessremark != null" >    
+          businessRemark=  #{businessremark,jdbcType=VARCHAR},   
+      </if>
+       <if test="feedback != null" >    
+          feedBack= #{feedback,jdbcType=VARCHAR},    
+       </if>
+       <if test="sphere != null" >    
+          sphere= #{sphere,jdbcType=VARCHAR},    
+       </if>
+       <if test="remark != null" >    
+          remark= #{remark,jdbcType=VARCHAR},    
+       </if>
+       <if test="drawnum != null" >    
+          drawNum=  #{drawnum,jdbcType=INTEGER},    
+       </if>
+       <if test="year != null">
+       year = #{year,jdbcType=DOUBLE},
+    </if>
+    <if test="month != null">
+       month = #{month,jdbcType=DOUBLE}
+    </if>     
+        </set>    
+        where userId = #{userid,jdbcType=INTEGER}   
+    </update>
+    
+    <select id="selectByExample" parameterType="com.py.shijijingying.entity.BoxinUser" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from user
+    where 1=1
+    	<if test="userid != null">
+      and userId = #{userid,jdbcType=INTEGER}
+    </if>
+    <if test="usernumber != null">
+      and userNumber = #{usernumber,jdbcType=VARCHAR}
+    </if>
+    <if test="useraccount != null">
+      and userAccount = #{useraccount,jdbcType=VARCHAR}
+    </if>
+    <if test="username != null">
+      and userName = #{username,jdbcType=VARCHAR}
+    </if>
+    <if test="userbusinessname != null">
+      and userBusinessName  LIKE CONCAT(CONCAT('%', #{userbusinessname,jdbcType=VARCHAR}), '%')
+    </if>
+    <if test="userphonenumber != null">
+      and userPhoneNumber = #{userphonenumber,jdbcType=VARCHAR}
+    </if>
+    <if test="userpassword != null">
+      and userPassword = #{userpassword,jdbcType=VARCHAR}
+    </if>
+    <if test="usergrourid != null">
+      and userGrourId = #{usergrourid,jdbcType=VARCHAR}
+    </if>
+    <if test="usercreationtime != null">
+      and userCreationTime = #{usercreationtime,jdbcType=VARCHAR}
+    </if>
+    <if test="userdutynumber != null">
+      and userDutyNumber = #{userdutynumber,jdbcType=VARCHAR}
+    </if>
+    <if test="userbank != null">
+      and userBank = #{userbank,jdbcType=VARCHAR}
+    </if>
+    <if test="userbanknumber != null">
+      and userBankNumber = #{userbanknumber,jdbcType=VARCHAR}
+    </if>
+    <if test="useraddress != null">
+      and userAddress = #{useraddress,jdbcType=VARCHAR}
+    </if>
+    <if test="userpushtype != null">
+      and userPushType = #{userpushtype,jdbcType=INTEGER}
+    </if>
+    <if test="userpushregistrationid != null">
+      and userPushRegistrationId = #{userpushregistrationid,jdbcType=VARCHAR}
+    </if>
+    <if test="userbalance != null">
+      and userBalance = #{userbalance,jdbcType=DOUBLE}
+    </if>
+    <if test="pennumber != null">
+      and penNumber = #{pennumber,jdbcType=INTEGER}
+    </if>
+    <if test="pignumber != null">
+      and pigNumber = #{pignumber,jdbcType=INTEGER}
+    </if>
+    <if test="personal != null">
+      and personal = #{personal,jdbcType=INTEGER}
+    </if>
+    <if test="userimg != null" >    
+         and  userImg= #{userimg,jdbcType=VARCHAR}    
+    </if>
+     <if test="insurance != null" >    
+       and  insurance=  #{insurance,jdbcType=VARCHAR}    
+     </if>
+     <if test="businessremark != null" >    
+        and  businessRemark=  #{businessremark,jdbcType=VARCHAR}   
+      </if>
+       <if test="feedback != null" >    
+         and feedBack= #{feedback,jdbcType=VARCHAR}    
+       </if>
+       <if test="sphere != null" >    
+         and sphere= #{sphere,jdbcType=VARCHAR}    
+       </if>
+       <if test="remark != null" >    
+         and remark= #{remark,jdbcType=VARCHAR}    
+       </if>
+       <if test="drawnum != null" >    
+         and drawNum=  #{drawnum,jdbcType=INTEGER}    
+       </if>
+       <if test="year != null">
+      and year = #{year,jdbcType=DOUBLE}
+    </if>
+    <if test="month != null">
+      and month = #{month,jdbcType=DOUBLE}
+    </if>     
+      order by userId desc
+  </select>
+</mapper>

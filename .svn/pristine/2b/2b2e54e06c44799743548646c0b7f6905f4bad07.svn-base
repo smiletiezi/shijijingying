@@ -1,0 +1,31 @@
+package com.py.shijijingying.utils;
+
+import java.util.Date;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class CommonUtil {
+	public static ConcurrentHashMap<String, Object> MSG_MAP = new ConcurrentHashMap<String, Object>();
+	public static long MOBILECODEEXPIRETIME=15*60*1000;
+	
+	/****
+	 * @param msg_uuid 验证码的uuid
+	 * 验证手机验证码***/
+	public static Msg verifyMobileCode(String mobile,String mobileCode){
+		if(mobile==null||mobileCode==null){
+			return Msg.fail().add("msg", "请输入手机号和手机验证码");
+		}
+		SMSBean smsBean = (SMSBean) MSG_MAP.get(mobile);
+		if(smsBean==null){
+			return Msg.fail().add("msg", "请获取验证码");
+		}
+		if(!smsBean.getValue().equals(mobileCode)){
+			return Msg.fail().add("msg", "验证码错误");
+		}
+		if( new Date().getTime()-smsBean.getSendDate().getTime() > MOBILECODEEXPIRETIME){
+			return Msg.fail().add("msg", "验证码过期,请重新获取");
+		}
+		MSG_MAP.remove(mobile);
+		return Msg.success();
+		
+	}
+}

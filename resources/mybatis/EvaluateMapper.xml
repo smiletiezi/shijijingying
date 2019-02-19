@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.EvaluateDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.Evaluate">
+    <id column="evaluateId" jdbcType="INTEGER" property="evaluateId" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="productId" jdbcType="INTEGER" property="productId" />
+    <result column="evaluate" jdbcType="VARCHAR" property="evaluate" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="userImg" jdbcType="VARCHAR" property="userImg" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="logistics" jdbcType="VARCHAR" property="logistics" />
+    <result column="attitude" jdbcType="VARCHAR" property="attitude" />
+    <result column="anonymous" jdbcType="VARCHAR" property="anonymous" />
+    <result column="auditing" jdbcType="VARCHAR" property="auditing" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    evaluateId,userId,productId,evaluate,userName,userImg,date,img,description,logistics,attitude,anonymous,auditing
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate
+    where evaluateId = #{evaluateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from evaluate
+    where evaluateId = #{evaluateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.Evaluate">
+    insert into evaluate (evaluateId,userId,productId,evaluate,userName,userImg,date,img,description,logistics,attitude,anonymous,auditing)
+    values (#{evaluateId,jdbcType=INTEGER},
+               #{userId,jdbcType=INTEGER}, 
+               #{productId,jdbcType=INTEGER}, 
+               #{evaluate,jdbcType=VARCHAR},
+               #{userName,jdbcType=VARCHAR},
+               #{userImg,jdbcType=VARCHAR},
+               #{date,jdbcType=VARCHAR},
+               #{img,jdbcType=VARCHAR},
+               #{description,jdbcType=VARCHAR},
+               #{logistics,jdbcType=VARCHAR},
+               #{attitude,jdbcType=VARCHAR},
+               #{anonymous,jdbcType=VARCHAR},
+               #{auditing,jdbcType=VARCHAR}
+               )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.Evaluate">
+    insert into evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluateId != null">
+        evaluateId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="productId != null">
+        productId,
+      </if>
+      <if test="evaluate != null">
+        evaluate,
+      </if>
+      <if test="userName != null">
+        userName,
+      </if>
+      <if test="userImg != null">
+        userImg,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="logistics != null">
+        logistics,
+      </if>
+      <if test="attitude != null">
+        attitude,
+      </if>
+      <if test="anonymous != null">
+        anonymous,
+      </if>
+       <if test="auditing != null">
+        auditing
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluateId != null">
+        #{evaluateId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null">
+        #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="logistics != null">
+        #{logistics,jdbcType=VARCHAR},
+      </if>
+      <if test="attitude != null">
+        #{attitude,jdbcType=VARCHAR},
+      </if>
+      <if test="anonymous != null">
+        #{anonymous,jdbcType=VARCHAR},
+      </if>
+      <if test="auditing != null">
+        #{auditing,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.Evaluate">
+    update evaluate
+    <set>
+      <if test="evaluateId != null">
+        evaluateId=#{evaluateId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        userId=#{userId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        productId=#{productId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluate != null">
+        evaluate=#{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        userName=#{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        userImg=#{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date=#{date,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img=#{img,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description=#{description,jdbcType=VARCHAR},
+      </if>
+      <if test="logistics != null">
+        logistics=#{logistics,jdbcType=VARCHAR},
+      </if>
+      <if test="attitude != null">
+        attitude=#{attitude,jdbcType=VARCHAR},
+      </if>
+      <if test="anonymous != null">
+        anonymous=#{anonymous,jdbcType=VARCHAR},
+      </if>
+      <if test="auditing != null">
+        auditing=#{auditing,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where evaluateId = #{evaluateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.Evaluate">
+    update evaluate
+    set evaluateId=#{evaluateId,jdbcType=INTEGER},
+       userId=#{userId,jdbcType=INTEGER},
+      productId=#{productId,jdbcType=INTEGER},
+     evaluate=#{evaluate,jdbcType=VARCHAR},
+     userName=#{userName,jdbcType=VARCHAR},
+     userImg=#{userImg,jdbcType=VARCHAR},
+     date=#{date,jdbcType=VARCHAR},
+       img=#{img,jdbcType=VARCHAR},
+       description=#{description,jdbcType=VARCHAR},
+       logistics=#{logistics,jdbcType=VARCHAR},
+        attitude=#{attitude,jdbcType=VARCHAR},
+        anonymous=#{anonymous,jdbcType=VARCHAR},
+          auditing=#{auditing,jdbcType=VARCHAR}
+    where evaluateId = #{evaluateId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.Evaluate" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from evaluate
+    where 1=1
+    	<if test="evaluateId != null">
+       and evaluateId=#{evaluateId,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+       and userId=#{userId,jdbcType=INTEGER}
+      </if>
+      <if test="productId != null">
+       and productId=#{productId,jdbcType=INTEGER}
+      </if>
+      <if test="evaluate != null">
+       and evaluate=#{evaluate,jdbcType=VARCHAR}
+      </if>
+       <if test="userName != null">
+       and userName=#{userName,jdbcType=VARCHAR}
+      </if>
+       <if test="userImg != null">
+       and userImg=#{userImg,jdbcType=VARCHAR}
+      </if>
+       <if test="date != null">
+       and date=#{date,jdbcType=VARCHAR}
+      </if>
+      <if test="img != null">
+       and img=#{img,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null">
+      and  description=#{description,jdbcType=VARCHAR}
+      </if>
+      <if test="logistics != null">
+       and logistics=#{logistics,jdbcType=VARCHAR}
+      </if>
+      <if test="attitude != null">
+       and attitude=#{attitude,jdbcType=VARCHAR}
+      </if>
+      <if test="anonymous != null">
+       and anonymous=#{anonymous,jdbcType=VARCHAR}
+      </if>
+      <if test="auditing != null">
+      and  auditing=#{auditing,jdbcType=VARCHAR}
+      </if>
+      order by evaluateId desc
+  </select>
+  
+</mapper>

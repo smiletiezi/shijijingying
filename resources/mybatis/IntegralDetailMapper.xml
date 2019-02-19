@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.IntegralDetailDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.IntegralDetail">
+    <id column="detail_id" jdbcType="INTEGER" property="detailId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="detail_type" jdbcType="VARCHAR" property="detailType" />
+    <result column="personal" jdbcType="INTEGER" property="personal" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    detail_id,user_id,detail_type,personal,date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.IntegralDetail">
+    insert into detail (detail_id,user_id,detail_type,personal,date)
+    values (#{detailId,jdbcType=INTEGER},
+               #{userId,jdbcType=INTEGER}, 
+               #{detailType,jdbcType=INTEGER}, 
+               #{personal,jdbcType=INTEGER},
+               #{date,jdbcType=VARCHAR}
+               )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.IntegralDetail">
+    insert into detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailId != null">
+        detail_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="detailType != null">
+        detail_type,
+      </if>
+      <if test="personal != null">
+        personal,
+      </if>
+      <if test="date != null">
+        date
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailId != null">
+        #{detailId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="detailType != null">
+        #{detailType,jdbcType=INTEGER},
+      </if>
+      <if test="personal != null">
+        #{personal,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.IntegralDetail">
+    update detail
+    <set>
+      <if test="detailId != null">
+       detail_id= #{detailId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+       user_id= #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="detailType != null">
+        detail_type=#{detailType,jdbcType=INTEGER},
+      </if>
+      <if test="personal != null">
+        personal=#{personal,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+       date= #{date,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.IntegralDetail">
+    update detail
+    set detail_id= #{detailId,jdbcType=INTEGER},
+       user_id= #{userId,jdbcType=INTEGER},
+      detail_type=#{detailType,jdbcType=INTEGER},
+       personal=#{personal,jdbcType=INTEGER},
+       date= #{date,jdbcType=VARCHAR}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.IntegralDetail" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from detail
+    where 1=1
+    	<if test="detailId != null">
+      and detail_id= #{detailId,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+      and user_id= #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="detailType != null">
+       and detail_type=#{detailType,jdbcType=INTEGER}
+      </if>
+      <if test="personal != null">
+        and personal=#{personal,jdbcType=INTEGER}
+      </if>
+      <if test="date != null">
+      and date= #{date,jdbcType=VARCHAR}
+      </if>
+      order by detail_id desc
+  </select>
+  
+</mapper>

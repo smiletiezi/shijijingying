@@ -1,0 +1,195 @@
+/*头部*/
+.g-hd{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+}
+.black-hd{
+	background: #000;
+}
+.g-hd .m-hd{
+}
+.g-hd .m-hd:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.g-hd .m-logo{
+	float: left;
+}
+.g-hd .m-logo img{
+	height: 82px;
+}
+.g-hd .m-nav{
+	float: right;
+	height: 82px;
+	padding-top: 24px;
+}
+.g-hd .m-nav>li{
+	display: inline-block;
+	margin-left: 5px;
+	position: relative;
+	padding: 5px 0;
+}
+.g-hd .m-nav li>a{
+	display: block;
+	width: 126px;
+	height: 30px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+}
+.g-hd .m-nav li a:hover{
+	border-radius: 5px;
+	line-height: 28px;
+	border: solid 1px #00a9ff;
+	
+}
+.g-hd .m-nav li.active a{
+	color: #00a9ff;
+	border-radius: 5px;
+	line-height: 28px;
+	border: solid 1px #00a9ff;
+}
+.g-hd .m-nav .u-dropdown-box{
+	position: absolute;
+	top: 40px;
+	left: 0;
+	display: none;
+}
+.g-hd .m-nav .show .u-dropdown-box{
+	display: block;
+}
+.g-hd .m-nav .u-dropdown-box .u-dropdown-triangle{
+	position: absolute;
+	top: -12px;
+	left: 50%;
+	margin-left: -6px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-bottom: 6px solid rgba(255,255,255,.5);
+}
+.g-hd .m-nav .u-dropdown{
+	background: rgba(255,255,255,.5);
+	width: 126px;
+	text-align: center;
+	line-height: 30px;
+}
+.g-hd .m-nav .u-dropdown-item a{
+	color: #fff;
+	font-size: 14px;
+}
+/*底部*/
+.g-footer{
+	background-color: #000000;
+	text-align: center;
+	font-size: 14px;
+	line-height: 35px;
+	color: #ffffff;
+	padding: 10px 0;
+}
+.g-footer .m-links li{
+	display: inline-block;
+}
+.g-footer .m-links a{
+	color: #ffffff;
+	display: inline-block;
+}
+.g-footer .m-links a:hover{
+	color: #FF0000;
+}
+.g-footer .m-links .u-link-line{
+	display: inline-block;
+	height: 14px;
+	border-left: 1px solid #FFFFFF;
+	margin: 0 10px;
+}
+
+/*面包屑*/
+.current-location{
+	color: #a6a6a6;
+	margin: 10px 0;
+}
+/*通用banner*/
+.common-banner{
+	height: 299px;
+	background: url(../img/public-banner.png) no-repeat;
+}
+.subtitle{
+	width: 1200px;
+	height: 49px;
+	line-height: 49px;
+	margin-bottom: 1px;
+}
+.subtitle-left{
+	width: 25%;
+	font-size: 26px;
+	color: #07439e;
+	border-bottom: 1px dashed #2499e3;
+}
+.subtitle-right{
+	width: 75%;
+	border-bottom: 1px solid #2499e3;
+	margin-top: -1px;
+}
+
+/*翻页*/
+.lawyer-page{
+	text-align: center;
+	margin:50px 0;
+}
+.lawyer-page a{
+	color: #fff;
+	padding: 5px 10px;
+	border:1px solid #3988ff;
+	background-color: #3988ff;
+}
+.lawyer-page a:hover{
+	color: #3988ff;
+	border:1px solid #3988ff;
+	background-color: #fff;
+	transition: all .2s;
+}
+.lawyer-page .active{
+	color: #3988ff;
+	padding: 5px 10px;
+	background-color: #fff;
+}
+.lawyer-page .lawyer-pageprv-dis,
+.lawyer-page .lawyer-pagenxt-dis{
+	background-color: #666;
+	cursor: not-allowed;
+	border:1px solid #666;
+}
+
+.lawyer-page .lawyer-pageprv-dis:hover,
+.lawyer-page .lawyer-pagenxt-dis:hover{
+	background-color: #666;
+	color: #fff;
+	border:1px solid #666;
+}
+/*上一篇,下一篇*/
+.lawyer-arrow{
+	margin: 50px 25px 50px 0;
+}
+.lawyer-arrow img{
+	margin-right: 5px;
+}
+.lawyer-arrow span a{
+	color: #333;
+}
+.lawyer-arrow span a:hover{
+	text-decoration: underline;
+}
+/*固定返回*/
+.m-fixed-btn{
+	width: 80px;
+	height: 140px;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+}

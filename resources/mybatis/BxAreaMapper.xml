@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.BxAreaMapper">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.BxArea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price_one" jdbcType="DOUBLE" property="priceOne" />
+    <result column="bxadd" jdbcType="DOUBLE" property="bxadd" />
+    <result column="postage" jdbcType="VARCHAR" property="postage" />
+    <result column="more" jdbcType="DOUBLE" property="more" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, price_one, bxadd, postage, more
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bx_area
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bx_area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.py.shijijingying.entity.BxArea">
+    insert into bx_area (id, name, price_one, 
+      bxadd, postage, more)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{priceOne,jdbcType=DOUBLE}, 
+      #{bxadd,jdbcType=DOUBLE}, #{postage,jdbcType=VARCHAR}, #{more,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.py.shijijingying.entity.BxArea">
+    insert into bx_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="priceOne != null">
+        price_one,
+      </if>
+      <if test="bxadd != null">
+        bxadd,
+      </if>
+      <if test="postage != null">
+        postage,
+      </if>
+      <if test="more != null">
+        more,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="priceOne != null">
+        #{priceOne,jdbcType=DOUBLE},
+      </if>
+      <if test="bxadd != null">
+        #{bxadd,jdbcType=DOUBLE},
+      </if>
+      <if test="postage != null">
+        #{postage,jdbcType=VARCHAR},
+      </if>
+      <if test="more != null">
+        #{more,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.BxArea">
+    update bx_area
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="priceOne != null">
+        price_one = #{priceOne,jdbcType=DOUBLE},
+      </if>
+      <if test="bxadd != null">
+        bxadd = #{bxadd,jdbcType=DOUBLE},
+      </if>
+      <if test="postage != null">
+        postage = #{postage,jdbcType=VARCHAR},
+      </if>
+      <if test="more != null">
+        more = #{more,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.BxArea">
+    update bx_area
+    set name = #{name,jdbcType=VARCHAR},
+      price_one = #{priceOne,jdbcType=DOUBLE},
+      bxadd = #{bxadd,jdbcType=DOUBLE},
+      postage = #{postage,jdbcType=VARCHAR},
+      more = #{more,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 根据名字模糊查询 -->
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bx_area
+    where name LIKE  CONCAT(CONCAT('%', #{_parameter}), '%')
+  </select>
+  
+  <!-- 查询列表 -->
+  
+  <select id="selectByExample" parameterType="com.py.shijijingying.entity.BxArea" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bx_area
+     where 1=1
+     <if test="id != null">
+     and  id= #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+       and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="priceOne != null">
+       and price_one = #{priceOne,jdbcType=DOUBLE}
+      </if>
+      <if test="bxadd != null">
+       and bxadd = #{bxadd,jdbcType=DOUBLE}
+      </if>
+      <if test="postage != null">
+       and postage = #{postage,jdbcType=VARCHAR}
+      </if>
+      <if test="more != null">
+      and  more = #{more,jdbcType=DOUBLE}
+      </if>
+      order by id desc
+  </select>
+</mapper>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hk.jzmb.dao.SysLogMapper">
+  <resultMap id="BaseResultMap" type="com.hk.jzmb.entity.SysLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ip_addr" jdbcType="VARCHAR" property="ipAddr" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="operate_desc" jdbcType="VARCHAR" property="operateDesc" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="exception_code" jdbcType="VARCHAR" property="exceptionCode" />
+    <result column="exception_desc" jdbcType="VARCHAR" property="exceptionDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ip_addr, create_time, create_user, type, operate_desc, method, exception_code, 
+    exception_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hk.jzmb.entity.SysLog">
+    insert into sys_log (id, ip_addr, create_time, 
+      create_user, type, operate_desc, 
+      method, exception_code, exception_desc
+      )
+    values (#{id,jdbcType=INTEGER}, #{ipAddr,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{operateDesc,jdbcType=VARCHAR}, 
+      #{method,jdbcType=VARCHAR}, #{exceptionCode,jdbcType=VARCHAR}, #{exceptionDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hk.jzmb.entity.SysLog">
+    insert into sys_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ipAddr != null">
+        ip_addr,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="operateDesc != null">
+        operate_desc,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="exceptionCode != null">
+        exception_code,
+      </if>
+      <if test="exceptionDesc != null">
+        exception_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddr != null">
+        #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="operateDesc != null">
+        #{operateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionCode != null">
+        #{exceptionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionDesc != null">
+        #{exceptionDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hk.jzmb.entity.SysLog">
+    update sys_log
+    <set>
+      <if test="ipAddr != null">
+        ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="operateDesc != null">
+        operate_desc = #{operateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionCode != null">
+        exception_code = #{exceptionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionDesc != null">
+        exception_desc = #{exceptionDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hk.jzmb.entity.SysLog">
+    update sys_log
+    set ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      operate_desc = #{operateDesc,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      exception_code = #{exceptionCode,jdbcType=VARCHAR},
+      exception_desc = #{exceptionDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="conditionSelect" parameterType="java.util.Map" resultMap="BaseResultMap">
+SELECT
+	t1.id,
+	t1.ip_addr,
+	t1.create_time,
+	t1.create_user,
+	t1.type,
+	t1.operate_desc,
+	t1.method,
+	t1.exception_code,
+	t1.exception_desc,
+	t2.login_name loginName
+FROM
+	sys_log t1
+LEFT JOIN sys_user t2 ON t1.create_user = t2.id
+ WHERE 1=1
+   	<if test="condition!=null and condition!='' ">	
+   		AND 	
+   		CONCAT(
+		IFNULL(t1.ip_addr, ''),
+		IFNULL(t1.type, ''),
+		IFNULL(t1.method, ''),
+		IFNULL(t1.operate_desc, ''),
+		IFNULL(t2.login_name, '')
+	) LIKE CONCAT('%',#{condition},'%')
+   	</if>
+   		ORDER BY t1.create_time DESC
+   </select>
+  
+
+  
+  
+</mapper>

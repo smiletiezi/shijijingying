@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.PkShopMapper">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.PkShop">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="contacts_phone" jdbcType="VARCHAR" property="contactsPhone" />
+    <result column="category1" jdbcType="INTEGER" property="category1" />
+    <result column="category2" jdbcType="INTEGER" property="category2" />
+    <result column="category3" jdbcType="INTEGER" property="category3" />
+    <result column="site_province" jdbcType="INTEGER" property="siteProvince" />
+    <result column="site_city" jdbcType="INTEGER" property="siteCity" />
+    <result column="site_district" jdbcType="INTEGER" property="siteDistrict" />
+    <result column="site_detail" jdbcType="VARCHAR" property="siteDetail" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="distribution_way" jdbcType="INTEGER" property="distributionWay" />
+    <result column="appearance_link" jdbcType="VARCHAR" property="appearanceLink" />
+    <result column="interior_link" jdbcType="VARCHAR" property="interiorLink" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="INTEGER" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_check" jdbcType="INTEGER" property="isCheck" />
+    <result column="check_user" jdbcType="INTEGER" property="checkUser" />
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, contacts, contacts_phone, category1, category2, category3, site_province, 
+    site_city, site_district, site_detail, longitude, latitude, distribution_way, appearance_link, 
+    interior_link, is_delete, create_user, create_time, update_user, update_time, is_check, 
+    check_user, check_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pk_shop
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pk_shop
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.py.shijijingying.entity.PkShop">
+    insert into pk_shop (id, name, contacts, 
+      contacts_phone, category1, category2, 
+      category3, site_province, site_city, 
+      site_district, site_detail, longitude, 
+      latitude, distribution_way, appearance_link, 
+      interior_link, is_delete, create_user, 
+      create_time, update_user, update_time, 
+      is_check, check_user, check_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
+      #{contactsPhone,jdbcType=VARCHAR}, #{category1,jdbcType=INTEGER}, #{category2,jdbcType=INTEGER}, 
+      #{category3,jdbcType=INTEGER}, #{siteProvince,jdbcType=INTEGER}, #{siteCity,jdbcType=INTEGER}, 
+      #{siteDistrict,jdbcType=INTEGER}, #{siteDetail,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{distributionWay,jdbcType=INTEGER}, #{appearanceLink,jdbcType=VARCHAR}, 
+      #{interiorLink,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{createUser,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isCheck,jdbcType=INTEGER}, #{checkUser,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.py.shijijingying.entity.PkShop">
+    insert into pk_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="contacts != null">
+        contacts,
+      </if>
+      <if test="contactsPhone != null">
+        contacts_phone,
+      </if>
+      <if test="category1 != null">
+        category1,
+      </if>
+      <if test="category2 != null">
+        category2,
+      </if>
+      <if test="category3 != null">
+        category3,
+      </if>
+      <if test="siteProvince != null">
+        site_province,
+      </if>
+      <if test="siteCity != null">
+        site_city,
+      </if>
+      <if test="siteDistrict != null">
+        site_district,
+      </if>
+      <if test="siteDetail != null">
+        site_detail,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="distributionWay != null">
+        distribution_way,
+      </if>
+      <if test="appearanceLink != null">
+        appearance_link,
+      </if>
+      <if test="interiorLink != null">
+        interior_link,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isCheck != null">
+        is_check,
+      </if>
+      <if test="checkUser != null">
+        check_user,
+      </if>
+      <if test="checkTime != null">
+        check_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhone != null">
+        #{contactsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="category1 != null">
+        #{category1,jdbcType=INTEGER},
+      </if>
+      <if test="category2 != null">
+        #{category2,jdbcType=INTEGER},
+      </if>
+      <if test="category3 != null">
+        #{category3,jdbcType=INTEGER},
+      </if>
+      <if test="siteProvince != null">
+        #{siteProvince,jdbcType=INTEGER},
+      </if>
+      <if test="siteCity != null">
+        #{siteCity,jdbcType=INTEGER},
+      </if>
+      <if test="siteDistrict != null">
+        #{siteDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="siteDetail != null">
+        #{siteDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionWay != null">
+        #{distributionWay,jdbcType=INTEGER},
+      </if>
+      <if test="appearanceLink != null">
+        #{appearanceLink,jdbcType=VARCHAR},
+      </if>
+      <if test="interiorLink != null">
+        #{interiorLink,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCheck != null">
+        #{isCheck,jdbcType=INTEGER},
+      </if>
+      <if test="checkUser != null">
+        #{checkUser,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null">
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.PkShop">
+    update pk_shop
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhone != null">
+        contacts_phone = #{contactsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="category1 != null">
+        category1 = #{category1,jdbcType=INTEGER},
+      </if>
+      <if test="category2 != null">
+        category2 = #{category2,jdbcType=INTEGER},
+      </if>
+      <if test="category3 != null">
+        category3 = #{category3,jdbcType=INTEGER},
+      </if>
+      <if test="siteProvince != null">
+        site_province = #{siteProvince,jdbcType=INTEGER},
+      </if>
+      <if test="siteCity != null">
+        site_city = #{siteCity,jdbcType=INTEGER},
+      </if>
+      <if test="siteDistrict != null">
+        site_district = #{siteDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="siteDetail != null">
+        site_detail = #{siteDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionWay != null">
+        distribution_way = #{distributionWay,jdbcType=INTEGER},
+      </if>
+      <if test="appearanceLink != null">
+        appearance_link = #{appearanceLink,jdbcType=VARCHAR},
+      </if>
+      <if test="interiorLink != null">
+        interior_link = #{interiorLink,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCheck != null">
+        is_check = #{isCheck,jdbcType=INTEGER},
+      </if>
+      <if test="checkUser != null">
+        check_user = #{checkUser,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null">
+        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.PkShop">
+    update pk_shop
+    set name = #{name,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      contacts_phone = #{contactsPhone,jdbcType=VARCHAR},
+      category1 = #{category1,jdbcType=INTEGER},
+      category2 = #{category2,jdbcType=INTEGER},
+      category3 = #{category3,jdbcType=INTEGER},
+      site_province = #{siteProvince,jdbcType=INTEGER},
+      site_city = #{siteCity,jdbcType=INTEGER},
+      site_district = #{siteDistrict,jdbcType=INTEGER},
+      site_detail = #{siteDetail,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      distribution_way = #{distributionWay,jdbcType=INTEGER},
+      appearance_link = #{appearanceLink,jdbcType=VARCHAR},
+      interior_link = #{interiorLink,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_user = #{createUser,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_check = #{isCheck,jdbcType=INTEGER},
+      check_user = #{checkUser,jdbcType=INTEGER},
+      check_time = #{checkTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+     
+    <!-- 查询所有商家 可模糊查询name -->
+   <select id="selectAllAndByname" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+     from pk_shop where is_delete =0
+    <if test="name != null and name !='' ">
+    	and name like concat('%',#{name},'%')
+    </if>
+    order by is_check desc
+   </select>
+   
+<!-- 查询所有商家 可模糊查询name  只查通过审核的商家 -->
+   <select id="selectAllAndBynameAndcheck" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+     from pk_shop where is_delete =0
+    <if test="name != null and name !='' ">
+    	and name like concat('%',#{name},'%')
+    </if>
+    and  is_check = 1
+   </select>
+   
+       <!-- 查询所有商家 可模糊查询name -->
+   <select id="selectAllAndBynameAndCheck" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+     from pk_shop where is_delete =0 and is_check=0
+    <if test="name != null and name !='' ">
+    	and name like concat('%',#{name},'%')
+    </if>
+   </select>
+</mapper>

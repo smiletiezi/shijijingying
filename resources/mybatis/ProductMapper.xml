@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.ProductDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.Product">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_sale_price" jdbcType="DOUBLE" property="productSalePrice" />
+    <result column="product_price" jdbcType="DOUBLE" property="productPrice" />
+    <result column="product_size" jdbcType="VARCHAR" property="productSize" />
+    <result column="product_sale_type" jdbcType="VARCHAR" property="productSaleType" />
+    <result column="product_brand" jdbcType="VARCHAR" property="productBrand" />
+    <result column="product_sale" jdbcType="VARCHAR" property="productSale" />
+    <result column="product_remark" jdbcType="VARCHAR" property="productRemark" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="product_img" jdbcType="VARCHAR" property="productImg" />
+    <result column="product_img_one" jdbcType="VARCHAR" property="productImgOne" />
+    <result column="product_img_two" jdbcType="VARCHAR" property="productImgTwo" />
+    <result column="product_belong" jdbcType="VARCHAR" property="productBelong" />
+    <result column="belong" jdbcType="VARCHAR" property="belong" />
+    <result column="product_discount" jdbcType="VARCHAR" property="productDiscount" />
+    <result column="percentage" jdbcType="VARCHAR" property="percentage" />
+    <result column="product_video" jdbcType="VARCHAR" property="productVideo" />
+    <result column="sales_volume" jdbcType="INTEGER" property="salesVolume" />
+    <result column="recommend" jdbcType="VARCHAR" property="recommend" />
+    <result column="present" jdbcType="VARCHAR" property="present" />
+    <result column="integration" jdbcType="INTEGER" property="integration" />
+    <result column="draw" jdbcType="VARCHAR" property="draw" />
+    <result column="discount_name" jdbcType="VARCHAR" property="discountName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id,product_name,
+    product_sale_price,
+    product_price,product_size,
+    product_sale_type,product_brand,
+    product_sale,product_remark,
+    product_type,product_img,product_img_one,product_img_two,
+    product_belong,belong,product_discount,percentage,
+    product_video,sales_volume,
+    recommend,present,integration,draw,discount_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.Product">
+    insert into product (product_id,product_name,
+    product_sale_price,product_price,
+    product_size,product_sale_type,
+    product_brand,product_sale,
+    product_remark,product_type,
+    product_img,product_img_one,product_img_two,product_belong,belong
+    product_discount,percentage,product_video,
+    sales_volume,recommend,present,integration,draw,discount_name)
+    values (#{productId,jdbcType=INTEGER},
+               #{productName,jdbcType=VARCHAR}, 
+               #{productSalePrice,jdbcType=DOUBLE},
+               #{productPrice,jdbcType=DOUBLE},
+               #{productSize,jdbcType=VARCHAR},
+               #{productSaleType,jdbcType=VARCHAR},
+               #{productBrand,jdbcType=VARCHAR},
+               #{productSale,jdbcType=VARCHAR},
+               #{productRemark,jdbcType=VARCHAR},
+               #{productType,jdbcType=INTEGER},
+               #{productImg,jdbcType=VARCHAR},
+                #{productImgOne,jdbcType=VARCHAR},
+                 #{productImgTwo,jdbcType=VARCHAR},
+               #{productBelong,jdbcType=VARCHAR},
+               #{belong,jdbcType=VARCHAR},
+               #{productDiscount,jdbcType=VARCHAR},
+               #{percentage,jdbcType=VARCHAR},
+               #{productVideo,jdbcType=VARCHAR},
+               #{salesVolume,jdbcType=INTEGER},
+               #{recommend,jdbcType=VARCHAR},
+               #{present,jdbcType=VARCHAR},
+               #{integration,jdbcType=INTEGER},
+               #{draw,jdbcType=VARCHAR},
+               #{discountName,jdbcType=VARCHAR}
+               )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="product_id" keyColumn="productId" parameterType="com.py.shijijingying.entity.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productSalePrice != null">
+        product_sale_price,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="productSize != null">
+        product_size,
+      </if>
+      <if test="productSaleType != null">
+        product_sale_type,
+      </if>
+      <if test="productBrand != null">
+        product_brand,
+      </if>
+      <if test="productSale != null">
+        product_sale,
+      </if>
+      <if test="productRemark != null">
+        product_remark,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="productImg != null">
+        product_img,
+      </if>
+      <if test="productImgOne != null">
+        product_img_one,
+      </if>
+      <if test="productImgTwo != null">
+        product_img_two,
+      </if>
+      <if test="productBelong != null">
+        product_belong,
+      </if>
+      <if test="belong != null">
+        belong,
+      </if>
+      <if test="productVideo != null">
+        product_video,
+      </if>
+      <if test="productDiscount != null">
+        product_discount,
+      </if>
+      <if test="percentage != null">
+        percentage,
+      </if>
+      <if test="salesVolume != null">
+        sales_volume,
+      </if>
+      <if test="recommend != null">
+        recommend,
+      </if>
+      <if test="present != null">
+        present,
+      </if>
+      <if test="integration != null">
+        integration,
+      </if>
+      <if test="draw != null">
+        draw,
+      </if>
+      <if test="discountName != null and  discountName !='' ">
+        discount_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productSalePrice != null">
+        #{productSalePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productSize != null">
+        #{productSize,jdbcType=VARCHAR},
+      </if>
+      <if test="productSaleType != null">
+        #{productSaleType,jdbcType=VARCHAR},
+      </if>
+      <if test="productBrand != null">
+        #{productBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="productSale != null">
+        #{productSale,jdbcType=VARCHAR},
+      </if>
+      <if test="productRemark != null">
+        #{productRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productImg != null">
+        #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productImgOne != null">
+        #{productImgOne,jdbcType=VARCHAR},
+      </if>
+      <if test="productImgTwo != null">
+        #{productImgTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="productBelong != null">
+        #{productBelong,jdbcType=VARCHAR},
+      </if>
+      <if test="belong != null">
+        #{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="productVideo != null">
+        #{productVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="productDiscount != null">
+        #{productDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=VARCHAR},
+      </if>
+      <if test="salesVolume != null">
+        #{salesVolume,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null">
+        #{recommend,jdbcType=VARCHAR},
+      </if>
+      <if test="present != null">
+        #{present,jdbcType=VARCHAR},
+      </if>
+      <if test="integration != null">
+        #{integration,jdbcType=INTEGER},
+      </if>
+      <if test="draw != null">
+        #{draw,jdbcType=VARCHAR},
+      </if>
+      <if test="discountName != null and discountName != '' ">
+        #{discountName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.Product">
+    update product
+    <set>
+      <if test="productId != null">
+       product_id=#{productId,jdbcType=INTEGER},
+      	</if>
+      <if test="productName != null">
+        product_name=#{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productSalePrice != null">
+        product_sale_price=#{productSalePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productPrice != null">
+        product_price=#{productPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="productSize != null">
+        product_size=#{productSize,jdbcType=VARCHAR},
+      </if>
+      <if test="productSaleType != null">
+        product_sale_type=#{productSaleType,jdbcType=VARCHAR},
+      </if>
+      <if test="productBrand != null">
+       product_brand=#{productBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="productSale != null">
+       product_sale=#{productSale,jdbcType=VARCHAR},
+      </if>
+      <if test="productRemark != null">
+       product_remark=#{productRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+       product_type=#{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productImg != null">
+       product_img=#{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productImgOne != null">
+       product_img_one=#{productImgOne,jdbcType=VARCHAR},
+      </if>
+      <if test="productImgTwo != null">
+       product_img_two=#{productImgTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="productBelong != null">
+       product_belong=#{productBelong,jdbcType=VARCHAR},
+      </if>
+      <if test="belong != null">
+       belong=#{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="productDiscount != null">
+       product_discount=#{productDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="percentage != null">
+       percentage= #{percentage,jdbcType=VARCHAR},
+      </if>
+      <if test="productVideo != null">
+       product_video=#{productVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="salesVolume !=null">
+       sales_volume=#{salesVolume,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null">
+       recommend=#{recommend,jdbcType=VARCHAR},
+      </if>
+      <if test="present != null">
+       present=#{present,jdbcType=VARCHAR},
+      </if>
+      <if test="integration != null">
+       integration=#{integration,jdbcType=INTEGER},
+      </if>
+      <if test="draw !=null">
+       draw=#{draw,jdbcType=VARCHAR},
+      </if>
+      <if test="discountName !=null and discountName !='' ">
+       discount_name=#{discountName,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.Product">
+    update product
+    set  product_id=#{productId,jdbcType=INTEGER},
+      product_name=#{productName,jdbcType=VARCHAR},
+      product_sale_price=#{productSalePrice,jdbcType=DOUBLE},
+      product_price=#{productPrice,jdbcType=DOUBLE},
+      product_size=#{productSize,jdbcType=VARCHAR},
+      product_sale_type=#{productSaleType,jdbcType=VARCHAR},
+      product_brand=#{productBrand,jdbcType=VARCHAR},
+      product_sale=#{productSale,jdbcType=VARCHAR},
+      product_remark=#{productRemark,jdbcType=VARCHAR},
+      product_type=#{productType,jdbcType=INTEGER},
+      product_img=#{productImg,jdbcType=VARCHAR},
+      product_img_one=#{productImgOne,jdbcType=VARCHAR},
+      product_img_two=#{productImgTwo,jdbcType=VARCHAR},
+      product_belong=#{productBelong,jdbcType=VARCHAR},
+      belong=#{belong,jdbcType=VARCHAR},
+      product_discount=#{productDiscount,jdbcType=VARCHAR},
+      percentage= #{percentage,jdbcType=VARCHAR},
+      product_video=#{productVideo,jdbcType=VARCHAR},
+      sales_volume=#{salesVolume,jdbcType=INTEGER},
+      recommend=#{recommend,jdbcType=VARCHAR},
+      present=#{present,jdbcType=VARCHAR},
+      integration=#{integration,jdbcType=INTEGER},
+       draw=#{draw,jdbcType=VARCHAR},
+       discount_name=#{discountName,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.Product" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from product
+    where 1=1
+    	<if test="productId != null">
+              and product_id=#{productId,jdbcType=INTEGER}
+      	</if>
+      <if test="productName != null and productName != '' ">
+              and product_name    like CONCAT(CONCAT('%', #{productName}), '%') 
+      </if>
+      <if test="productSalePrice != null">
+             and product_sale_price=#{productSalePrice,jdbcType=DOUBLE}
+      </if>
+      <if test="productPrice != null">
+             and  product_price=#{productPrice,jdbcType=DOUBLE}
+      </if>
+      <if test="productSize != null">
+             and  product_size=#{productSize,jdbcType=VARCHAR}
+      </if>
+      <if test="productSaleType != null">
+             and product_sale_type=#{productSaleType,jdbcType=VARCHAR}
+      </if>
+      <if test="productBrand != null">
+            and product_brand=#{productBrand,jdbcType=VARCHAR}
+      </if>
+      <if test="productSale != null">
+           and product_sale=#{productSale,jdbcType=VARCHAR}
+      </if>
+      <if test="productRemark != null">
+           and product_remark=#{productRemark,jdbcType=VARCHAR}
+      </if>
+      <if test="productType != null">
+           and product_type=#{productType,jdbcType=INTEGER}
+      </if>
+      <if test="productImg != null">
+          and  product_img=#{productImg,jdbcType=VARCHAR}
+      </if>
+      <if test="productImgOne != null">
+          and  product_img_one=#{productImgOne,jdbcType=VARCHAR}
+      </if>
+      <if test="productImgTwo != null">
+          and  product_img_two=#{productImgTwo,jdbcType=VARCHAR}
+      </if>
+      <if test="productBelong != null">
+          and product_belong=#{productBelong,jdbcType=VARCHAR}
+      </if>
+      <if test="belong != null">
+          and belong=#{belong,jdbcType=VARCHAR}
+      </if>
+      <if test="productDiscount != null">
+          and product_discount=#{productDiscount,jdbcType=VARCHAR}
+      </if>
+      <if test="percentage != null">
+      and  percentage= #{percentage,jdbcType=VARCHAR}
+      </if>
+      <if test="productVideo != null">
+          and product_video=#{productVideo,jdbcType=VARCHAR}
+      </if>
+      <if test="salesVolume !=null">
+       and sales_volume=#{salesVolume,jdbcType=INTEGER}
+      </if>
+      <if test="recommend != null">
+          and recommend=#{recommend,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="present != null">
+          and present=#{present,jdbcType=VARCHAR}
+      </if>
+      <if test="integration !=null">
+       and integration=#{integration,jdbcType=INTEGER}
+      </if>
+      <if test="draw != null">
+          and draw=#{draw,jdbcType=VARCHAR}
+      </if>
+      <if test="discountName !=null and discountName != '' ">
+        and  discount_name=#{discountName,jdbcType=VARCHAR}
+      </if>
+     order by product_id desc 
+  </select>
+  <select id="selectByList" resultMap="BaseResultMap">
+    select * from product where product_id in
+        <foreach collection="list" item="dramaId" open="(" close=")" separator=",">
+             #{dramaId}
+       </foreach>
+</select>
+<select id="selectByLimt" resultMap="BaseResultMap">
+   select * from product  order by  RAND() LIMIT 4
+   
+</select>
+</mapper>

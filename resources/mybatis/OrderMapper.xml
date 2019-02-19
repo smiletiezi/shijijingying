@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.OrderDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="belong" jdbcType="VARCHAR" property="belong" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="ship_person" jdbcType="VARCHAR" property="shipPerson" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="ship_address" jdbcType="VARCHAR" property="shipAddress" />
+    <result column="order_phone" jdbcType="VARCHAR" property="orderPhone" />
+    <result column="create_date" jdbcType="VARCHAR" property="createDate" />
+    <result column="logistics_number" jdbcType="VARCHAR" property="logisticsNumber" />
+    <result column="logistics_name" jdbcType="VARCHAR" property="logisticsName" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="order_price" jdbcType="DOUBLE" property="orderPrice" />
+    <result column="postage" jdbcType="DOUBLE" property="postage" />
+    <result column="delivery" jdbcType="VARCHAR" property="delivery" />
+    <result column="ship_type" jdbcType="VARCHAR" property="shipType" />
+    <result column="delete_type" jdbcType="VARCHAR" property="deleteType" />
+    <result column="evaluate" jdbcType="VARCHAR" property="evaluate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id,order_number,belong,user_name,user_id,ship_person,num,ship_address,order_phone,create_date,logistics_number,logistics_name,order_type,update_time,order_price,postage,delivery,ship_type,delete_type,evaluate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pywl_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pywl_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.py.shijijingying.entity.Order">
+    insert into pywl_order (order_id,order_number,belong,user_name,user_id,ship_person,num,ship_address,order_phone,create_date,logistics_number,logistics_name,order_type,update_time,order_price,postage,delivery,ship_type,delete_type,evaluate)
+    values (#{orderId,jdbcType=INTEGER},
+               #{orderNumber,jdbcType=VARCHAR},
+                #{belong,jdbcType=VARCHAR}, 
+               #{userName,jdbcType=VARCHAR}, 
+               #{userId,jdbcType=INTEGER}, 
+               #{shipPerson,jdbcType=VARCHAR},
+                #{num,jdbcType=INTEGER}, 
+               #{shipAddress,jdbcType=VARCHAR},
+               #{orderPhone,jdbcType=VARCHAR},
+               #{createDate,jdbcType=VARCHAR},
+               #{logisticsNumber,jdbcType=VARCHAR},
+               #{logisticsName,jdbcType=VARCHAR},
+               #{orderType,jdbcType=VARCHAR},
+               #{updateTime,jdbcType=VARCHAR},
+               #{orderPrice,jdbcType=DOUBLE},
+               #{postage,jdbcType=DOUBLE},
+               #{delivery,jdbcType=VARCHAR},
+               #{shipType,jdbcType=VARCHAR},
+               #{deleteType,jdbcType=VARCHAR},
+               #{evaluate,jdbcType=VARCHAR}
+               )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.py.shijijingying.entity.Order">
+    insert into pywl_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="belong != null">
+        belong,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="shipPerson != null">
+        ship_person,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="shipAddress != null">
+        ship_address,
+      </if>
+      <if test="orderPhone != null">
+        order_phone,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="logisticsNumber != null">
+        logistics_number,
+      </if>
+      <if test="logisticsName != null">
+        logistics_name,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="orderPrice != null">
+        order_price,
+      </if>
+       <if test="postage != null">
+        postage,
+      </if>
+      <if test="delivery != null">
+        delivery,
+      </if>
+      <if test="shipType != null">
+        ship_type,
+      </if>
+      <if test="deleteType != null">
+        delete_type,
+      </if>
+      <if test="evaluate != null">
+        evaluate
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="belong != null">
+        #{belong,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shipPerson != null">
+        #{shipPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="shipAddress != null">
+        #{shipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPhone != null">
+        #{orderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsNumber != null">
+        #{logisticsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsName != null">
+        #{logisticsName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null">
+        #{orderPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="postage != null">
+        #{postage,jdbcType=DOUBLE},
+      </if>
+      <if test="delivery != null">
+        #{delivery,jdbcType=VARCHAR},
+      </if>
+      <if test="shipType != null">
+        #{shipType,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteType != null">
+        #{deleteType,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluate != null">
+        #{evaluate,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.Order">
+    update pywl_order
+    <set>
+      <if test="orderId != null">
+       order_id=#{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null">
+       order_number=#{orderNumber,jdbcType=VARCHAR}, 
+      </if>
+      <if test="belong != null">
+       belong=#{belong,jdbcType=VARCHAR}, 
+      </if>
+      <if test="userName != null">
+      user_name=#{userName,jdbcType=VARCHAR}, 
+      </if>
+      <if test="userId != null">
+        user_id=#{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shipPerson != null">
+        ship_person=#{shipPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num=#{num,jdbcType=INTEGER},
+      </if>
+      <if test="shipAddress != null">
+        ship_address=#{shipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time=#{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPhone != null">
+       order_phone=#{orderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date=#{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsNumber != null">
+        logistics_number=#{logisticsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsName != null">
+        logistics_name=#{logisticsName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        order_type= #{orderType,jdbcType=VARCHAR},
+      </if>
+       <if test="orderPrice != null">
+         order_price=#{orderPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="postage != null">
+         postage=#{postage,jdbcType=DOUBLE},
+      </if>
+      <if test="delivery != null">
+        delivery=#{delivery,jdbcType=VARCHAR},
+      </if>
+      <if test="shipType != null">
+        ship_type=#{shipType,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteType != null">
+        delete_type=#{deleteType,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluate != null">
+        evaluate=#{evaluate,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.Order">
+    update pywl_order
+    set order_id=#{orderId,jdbcType=INTEGER},
+       order_number=#{orderNumber,jdbcType=VARCHAR}, 
+        belong=#{belong,jdbcType=VARCHAR}, 
+      user_name=#{userName,jdbcType=VARCHAR}, 
+      user_id=#{userId,jdbcType=INTEGER},
+     ship_person=#{shipPerson,jdbcType=VARCHAR},
+      num=#{num,jdbcType=INTEGER},
+       ship_address=#{shipAddress,jdbcType=VARCHAR},
+       update_time=#{updateTime,jdbcType=VARCHAR},
+       order_phone=#{orderPhone,jdbcType=VARCHAR},
+       create_date=#{createDate,jdbcType=VARCHAR},
+         logistics_number=#{logisticsNumber,jdbcType=VARCHAR},
+          logistics_name=#{logisticsName,jdbcType=VARCHAR},
+          order_type= #{orderType,jdbcType=VARCHAR},
+            order_price=#{orderPrice,jdbcType=DOUBLE},
+            postage=#{postage,jdbcType=DOUBLE},
+             delivery=#{delivery,jdbcType=VARCHAR},
+             ship_type=#{shipType,jdbcType=VARCHAR},
+             delete_type=#{deleteType,jdbcType=VARCHAR},
+             evaluate=#{evaluate,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.Order" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from pywl_order
+    where 1=1
+    	<if test="orderId != null">
+       and order_id=#{orderId,jdbcType=INTEGER}
+      </if>
+      <if test="orderNumber != null">
+      and order_number=#{orderNumber,jdbcType=VARCHAR} 
+      </if>
+      <if test="belong != null">
+      and belong=#{belong,jdbcType=VARCHAR} 
+      </if>
+      <if test="userName != null">
+     and user_name=#{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+       and user_id=#{userId,jdbcType=INTEGER}
+      </if>
+      <if test="shipPerson != null">
+      and  ship_person=#{shipPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="num != null">
+       and num=#{num,jdbcType=INTEGER}
+      </if>
+      <if test="shipAddress != null">
+       and ship_address=#{shipAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="updateTime != null">
+       and update_time=#{updateTime,jdbcType=VARCHAR}
+      </if>
+      <if test="orderPhone != null">
+      and order_phone=#{orderPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="createDate != null">
+       and create_date like CONCAT(CONCAT('%', #{createDate}), '%')
+      </if>
+      <if test="logisticsNumber != null">
+       and logistics_number=#{logisticsNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="logisticsName != null">
+       and logistics_name=#{logisticsName,jdbcType=VARCHAR}
+      </if>
+      <if test="orderType != null">
+       and order_type= #{orderType,jdbcType=VARCHAR}
+      </if>
+       <if test="orderPrice != null">
+       and  order_price=#{orderPrice,jdbcType=DOUBLE}
+      </if>
+      <if test="postage != null">
+       and  postage=#{postage,jdbcType=DOUBLE}
+      </if>
+      <if test="delivery != null">
+        and delivery=#{delivery,jdbcType=VARCHAR}
+      </if>
+      <if test="shipType != null">
+       and  ship_type=#{shipType,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteType != null">
+        and delete_type=#{deleteType,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluate != null">
+        and evaluate=#{evaluate,jdbcType=VARCHAR}
+      </if>
+      order by order_id desc
+  </select>
+  <select id="selectByList" resultMap="BaseResultMap">
+    select * from pywl_order where order_id in
+        <foreach collection="list" item="dramaId" open="(" close=")" separator=",">
+             #{dramaId}
+       </foreach>
+</select>
+</mapper>

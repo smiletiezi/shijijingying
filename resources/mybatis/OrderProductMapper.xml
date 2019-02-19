@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.OrderProductDao">
+   <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.OrderProduct">
+    <id column="order_product_id" jdbcType="INTEGER" property="orderProductId" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="sale_price" jdbcType="DOUBLE" property="salePrice" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="percentage" jdbcType="VARCHAR" property="percentage" />
+    <result column="partner" jdbcType="DOUBLE" property="partner" />
+    <result column="salesman" jdbcType="DOUBLE" property="salesman" />
+    <result column="create_date" jdbcType="VARCHAR" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_product_id,order_number,type,product_name,
+    img,num,remark,price,sale_price,size,user_id,
+    user_name,percentage,partner,salesman,create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_product
+    where order_product_id = #{orderProductId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_product
+    where order_product_id = #{orderProductId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.OrderProduct">
+    insert into order_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderProductId != null">
+        order_product_id,
+      </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="salePrice != null">
+        sale_price,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="percentage != null">
+        percentage,
+      </if>
+      <if test="partner != null">
+        partner,
+      </if>
+      <if test="salesman != null">
+        salesman,
+      </if>
+      <if test="createDate != null">
+        create_date
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderProductId != null">
+        #{orderProductId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="salePrice != null">
+        #{salePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName!= null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=VARCHAR},
+      </if>
+      <if test="partner != null">
+        #{partner,jdbcType=DOUBLE},
+      </if>
+      <if test="salesman != null">
+        #{salesman,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate !=null">
+        #{createDate,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.OrderProduct">
+    update order_product
+    <set>
+      <if test="orderProductId != null">
+        order_product_id=#{orderProductId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null">
+        order_number=#{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type=#{type,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_name=#{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img=#{img,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num=#{num,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark=#{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price=#{price,jdbcType=DOUBLE},
+      </if>
+      <if test="salePrice != null">
+        sale_price=#{salePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="size != null">
+        size=#{size,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id=#{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName!= null">
+        user_name=#{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="percentage != null">
+       percentage= #{percentage,jdbcType=VARCHAR},
+      </if>
+      <if test="partner != null">
+        partner=#{partner,jdbcType=DOUBLE},
+      </if>
+      <if test="salesman != null">
+        salesman=#{salesman,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        create_date=#{createDate,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where order_product_id = #{orderProductId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.OrderProduct" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from order_product
+    where 1=1
+      <if test="orderProductId != null">
+        and order_product_id=#{orderProductId,jdbcType=INTEGER}
+      </if>
+      <if test="orderNumber != null">
+       and order_number=#{orderNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+       and type=#{type,jdbcType=VARCHAR}
+      </if>
+      <if test="productName != null">
+       and product_name=#{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="img != null">
+       and img=#{img,jdbcType=VARCHAR}
+      </if>
+      <if test="num != null">
+       and num=#{num,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+      and  remark=#{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="price != null">
+      and  price=#{price,jdbcType=DOUBLE}
+      </if>
+      <if test="salePrice != null">
+      and  sale_price=#{salePrice,jdbcType=DOUBLE}
+      </if>
+      <if test="size != null">
+      and  size=#{size,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+      and  user_id=#{userId,jdbcType=INTEGER}
+      </if>
+      <if test="userName!= null">
+        and user_name=#{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="percentage != null">
+      and percentage= #{percentage,jdbcType=VARCHAR}
+      </if>
+      <if test="partner != null">
+       and partenr=#{partner,jdbcType=DOUBLE}
+      </if>
+      <if test="salesman != null">
+       and salesman=#{salesman,jdbcType=DOUBLE}
+      </if>
+      <if test="createDate!=null">
+        and create_date=#{createDate,jdbcType=VARCHAR}
+      </if>
+      order by order_product_id desc
+  </select>
+  <select id="selectByList" resultMap="BaseResultMap"  parameterType="java.util.Map">
+    select * from order_product where user_id in
+        <foreach collection="ids" item="dramaId" open="(" close=")" separator=",">
+             #{dramaId}
+       </foreach>
+       <if test="createDate!=null">
+        and create_date  like CONCAT(CONCAT('%', #{createDate}), '%')
+      </if>
+      <if test="type!=null">
+        and type=#{type,jdbcType=VARCHAR}
+      </if>
+</select>
+
+<select id="selectByMonth" resultMap="BaseResultMap"  parameterType="java.util.Map">
+    select * from order_product where user_id in
+        <foreach collection="ids" item="dramaId" open="(" close=")" separator=",">
+             #{dramaId}
+       </foreach>
+       <if test="type!=null">
+        and type=#{type,jdbcType=VARCHAR}
+      </if>
+        and DATE_FORMAT( create_date, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+</select>
+</mapper>

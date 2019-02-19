@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.ProductTypeDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.ProductType">
+    <id column="product_type_id" jdbcType="INTEGER" property="productTypeId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_type_id,name,img,type_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_type
+    where product_type_id = #{productTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product_type
+    where product_type_id = #{productTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.ProductType">
+    insert into product_type (product_type_id,name,img,type_code)
+    values (#{productTypeId,jdbcType=INTEGER},
+               #{name,jdbcType=VARCHAR}, 
+               #{img,jdbcType=VARCHAR}, 
+               #{typeCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.ProductType">
+    insert into product_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productTypeId != null">
+        product_type_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="typeCode != null">
+        type_code
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productTypeId != null">
+       #{productTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        #{typeCode,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.ProductType">
+    update product_type
+    <set>
+      <if test="productTypeId != null">
+        product_type_id = #{productTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        type_code = #{typeCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_type_id = #{productTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.ProductType">
+    update product_type
+    set product_type_id = #{productTypeId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      type_code = #{typeCode,jdbcType=VARCHAR}
+    where product_type_id = #{productTypeId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.ProductType" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from product_type
+    where 1=1
+    	<if test="productTypeId != null">
+      		and product_type_id = #{productTypeId,jdbcType=INTEGER}
+     	</if>
+   		<if test="name != null">
+      		and name = #{name,jdbcType=VARCHAR}
+     	</if>
+     	<if test="img != null">
+      		and img = #{img,jdbcType=VARCHAR}
+     	</if>
+     	<if test="typeCode != null">
+       		and type_code = #{typeCode,jdbcType=VARCHAR}
+     	</if>
+      order by product_type_id desc
+  </select>
+  
+  <select id="selectTwoAll" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from product_type
+    where type_code !=0
+  </select>
+  
+</mapper>

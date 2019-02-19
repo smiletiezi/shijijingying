@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.ExchangeDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.Exchange">
+    <id column="exchange_id" jdbcType="INTEGER" property="exchangeId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="product" jdbcType="VARCHAR" property="product" />
+    <result column="personal" jdbcType="INTEGER" property="personal" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    exchange_id,user_id,product,personal,date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from exchange
+    where exchange_id = #{exchangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from exchange
+    where exchange_id = #{exchangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.Exchange">
+    insert into exchange (exchange_id,user_id,product,personal,date)
+    values (#{exchangeId,jdbcType=INTEGER},
+               #{userId,jdbcType=INTEGER}, 
+               #{product,jdbcType=VARCHAR}, 
+               #{personal,jdbcType=INTEGER},
+               #{date,jdbcType=VARCHAR}
+               )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.Exchange">
+    insert into exchange
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="exchangeId != null">
+        exchange_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="product != null">
+        product,
+      </if>
+      <if test="personal != null">
+        personal,
+      </if>
+      <if test="date != null">
+        date
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="exchangeId != null">
+        #{exchangeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="product != null">
+        #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="personal != null">
+        #{personal,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.Exchange">
+    update exchange
+    <set>
+      <if test="exchangeId != null">
+       exchange_id= #{exchangeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+       user_id= #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="product != null">
+        product=#{product,jdbcType=VARCHAR},
+      </if>
+      <if test="personal != null">
+        personal=#{personal,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+       date= #{date,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where exchange_id = #{exchangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.Exchange">
+    update exchange
+    set exchange_id = #{exchangeId,jdbcType=INTEGER},
+       user_id= #{userId,jdbcType=INTEGER},
+      product=#{product,jdbcType=VARCHAR},
+       personal=#{personal,jdbcType=INTEGER},
+       date= #{date,jdbcType=VARCHAR}
+    where exchange_id = #{exchangeId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.Exchange" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from exchange
+    where 1=1
+      <if test="exchangeId != null">
+       and exchange_id= #{exchangeId,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+       and user_id= #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="product != null">
+       and product=#{product,jdbcType=VARCHAR}
+      </if>
+      <if test="personal != null">
+       and personal=#{personal,jdbcType=INTEGER}
+      </if>
+      <if test="date != null">
+      and date= #{date,jdbcType=VARCHAR}
+      </if>
+      order by exchange_id desc
+  </select>
+  
+</mapper>

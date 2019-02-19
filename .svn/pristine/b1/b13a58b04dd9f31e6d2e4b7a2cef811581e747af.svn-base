@@ -1,0 +1,145 @@
+.ab-content{
+	margin-top: 86px;
+}
+.ab-cont .ptop{
+	padding-top: 20px;
+}
+.ab-details{
+	padding-top: 38px;
+}
+
+.details-title{
+	font-size: 30px;
+	color: #0399df;
+	text-align: center;
+}
+.details-cont{
+	color:#666;
+	line-height: 24px;
+	padding: 26px 40px 24px 40px;
+	text-indent: 2em;
+}
+.details-cont-words{
+	margin-bottom: 24px;
+}
+.details-title-words{
+	color: #999;
+	font-size: 14px;
+	margin-top: 18px;
+	margin-bottom: 10px;
+}
+.details-title-words .ml15{
+	margin-left: 15px;
+}
+.double-cross-line{
+	width: 1000px;
+	height: 4px;
+	border: 1px solid #c9c9c9;
+	margin: 0 auto;
+}
+.contact-information{
+	margin: 38px 0 22px 0;
+}
+.information-list{
+	text-align: center;
+}
+
+.information-ul li{
+	width: 18%;
+}
+.information-ul .last-li{
+	width: 28%;
+}
+.contact-map-box{
+	height: 528px;
+	padding-top: 18px;
+	margin-bottom: 15px;
+	background-color: #f0fafe;
+}
+.contact-map{
+	height: 492px;
+	width: 1164px;
+	margin: 0 auto;
+}
+#report-errors{
+	width: 788px;
+	margin: 0 auto;
+	padding-top: 96px;
+}
+
+.news-ul{
+	border-left: 1px solid #c4c4c4;
+}
+.news-li{
+	margin: 25px 0 0 22px;
+	border-bottom: 1px dashed #b7b7b7;
+}
+.news-li:last-child{
+	border-bottom:none;
+}
+.news-li-title{
+	font-size: 16px;
+	color: #121212;
+	line-height: 25px;
+}
+.circular-point{
+	position: absolute;
+    margin: 9px -24px;
+    width: 3px;
+    height: 3px;
+    background: #07439e;
+    border: 1px solid #07439e;
+}
+.news-title-img{
+	margin-right: 10px;
+}
+.list-newstitle{
+	color:#121212;
+	cursor: pointer;
+}
+.list-newstitle:hover{
+	color:#00a9ff;
+}
+.news-li-cont{
+	color: #6b6b6b;
+	margin-bottom: 20px;
+	margin-top: 6px;
+}
+.news-list-cont{
+	margin-top: 20px;
+}
+.news-li-more{
+	font-size: 12px;
+	color: #a09f9f;
+	line-height: 25px;
+	margin-bottom: 14px;
+}
+.news-more-browse{
+	margin-left: 50px;
+}
+.understand-more{
+	height: 22px;
+    width: 77px;
+    background-color: #ececec;
+    text-align: center;
+    color: #4d4d4d;
+}
+.understand-more:hover{
+	color: #00a9ff;
+}
+.bottom-none{
+	border-bottom: none;
+}
+.recommend-cont{
+	padding: 10px 0 80px 0;
+}
+.recommend-cont-words{
+	line-height: 35px;
+	font-size: 16px;
+	color: #121212;
+	display: block;
+	cursor: default;
+}
+.newsdetails-next{
+	height: 114px;
+}

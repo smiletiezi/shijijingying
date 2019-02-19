@@ -1,0 +1,51 @@
+package com.py.shijijingying.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.py.shijijingying.dao.SysRoleUserMapper;
+import com.py.shijijingying.entity.SysRoleUser;
+/**
+ * 用户角色关联表
+ * @author LiuHao
+ *
+ * 2018年9月18日
+ */
+@Service
+public class SysRoleUserService {
+	@Autowired
+	private SysRoleUserMapper sysRoleUserMapper;
+	
+	/**
+	 * 增加方法
+	 * 
+	 * @param record
+	 * @return
+	 */
+    public int insertSelective(SysRoleUser record) {
+    	return sysRoleUserMapper.insertSelective(record);
+    }
+    /**
+     * 根据主键查询
+     * @param id
+     * @return
+     */
+    public SysRoleUser selectByPrimaryKey(Integer id) {
+    	return  sysRoleUserMapper.selectByPrimaryKey(id);
+    }
+	/**
+	 * 修改方法
+	 * @param record
+	 * @return
+	 */
+    public int updateByPrimaryKeySelective(SysRoleUser record){
+    	return sysRoleUserMapper.updateByPrimaryKeySelective(record);
+    }
+    
+    /**
+     * 查找
+     */
+    public SysRoleUser selectBySysRoleUser(SysRoleUser record) {
+    	return sysRoleUserMapper.selectBySysRoleUser(record);
+    }
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.YearEndDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.YearEnd">
+    <id column="year_id" jdbcType="INTEGER" property="yearId" />
+    <result column="month" jdbcType="VARCHAR" property="month" />
+    <result column="ratio" jdbcType="DOUBLE" property="ratio" />
+   
+  </resultMap>
+  <sql id="Base_Column_List">
+    year_id,month,ratio
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from year_end
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from year_end
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.YearEnd">
+    insert into year_end
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yearId != null">
+        year_id,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
+      <if test="ratio != null">
+        ratio
+      </if> 
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yearId != null">
+        #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="ratio != null">
+        #{ratio,jdbcType=DOUBLE}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.YearEnd">
+    update year_end
+    <set>
+      <if test="yearId != null">
+        year_id=#{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="month != null">
+        month=#{month,jdbcType=VARCHAR},
+      </if>
+      <if test="ratio != null">
+        ratio=#{ratio,jdbcType=DOUBLE}
+      </if>
+      </set>
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.YearEnd" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from year_end
+    where 1=1
+      <if test="yearId != null">
+       and year_id=#{yearId,jdbcType=INTEGER}
+      </if>
+      <if test="month != null">
+       and month=#{month,jdbcType=VARCHAR}
+      </if>
+      <if test="ratio != null">
+      and  ratio=#{ratio,jdbcType=DOUBLE}
+      </if>
+      order by year_id desc
+  </select>
+  
+</mapper>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.TradingRecordDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.TradingRecord">
+    <id column="trading_record_id" jdbcType="INTEGER" property="tradingRecordId" />
+    <result column="trading_record_user_id" jdbcType="INTEGER" property="tradingRecordUserId" />
+    <result column="trading_record_type" jdbcType="INTEGER" property="tradingRecordType" />
+    <result column="trading_record_price" jdbcType="DOUBLE" property="tradingRecordPrice" />
+    <result column="trading_record_status" jdbcType="INTEGER" property="tradingRecordStatus" />
+    <result column="trading_record_des" jdbcType="VARCHAR" property="tradingRecordDes" />
+    <result column="trading_record_bill" jdbcType="VARCHAR" property="tradingRecordBill" />
+    <result column="transaction_id" jdbcType="VARCHAR" property="transactionId" />
+    <result column="trading_record_time" jdbcType="VARCHAR" property="tradingRecordTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    trading_record_id, trading_record_user_id, trading_record_type, trading_record_price, 
+    trading_record_status, trading_record_des, trading_record_bill, transaction_id, trading_record_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from trading_record
+    where trading_record_id = #{tradingRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from trading_record
+    where trading_record_id = #{tradingRecordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.TradingRecord">
+    insert into trading_record (trading_record_id, trading_record_user_id, 
+      trading_record_type, trading_record_price, trading_record_status, 
+      trading_record_des, trading_record_bill, transaction_id, 
+      trading_record_time)
+    values (#{tradingRecordId,jdbcType=INTEGER}, #{tradingRecordUserId,jdbcType=INTEGER}, 
+      #{tradingRecordType,jdbcType=INTEGER}, #{tradingRecordPrice,jdbcType=DOUBLE}, #{tradingRecordStatus,jdbcType=INTEGER}, 
+      #{tradingRecordDes,jdbcType=VARCHAR}, #{tradingRecordBill,jdbcType=VARCHAR}, #{transactionId,jdbcType=VARCHAR}, 
+      #{tradingRecordTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.TradingRecord">
+    insert into trading_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tradingRecordId != null">
+        trading_record_id,
+      </if>
+      <if test="tradingRecordUserId != null">
+        trading_record_user_id,
+      </if>
+      <if test="tradingRecordType != null">
+        trading_record_type,
+      </if>
+      <if test="tradingRecordPrice != null">
+        trading_record_price,
+      </if>
+      <if test="tradingRecordStatus != null">
+        trading_record_status,
+      </if>
+      <if test="tradingRecordDes != null">
+        trading_record_des,
+      </if>
+      <if test="tradingRecordBill != null">
+        trading_record_bill,
+      </if>
+      <if test="transactionId != null">
+        transaction_id,
+      </if>
+      <if test="tradingRecordTime != null">
+        trading_record_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tradingRecordId != null">
+        #{tradingRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordUserId != null">
+        #{tradingRecordUserId,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordType != null">
+        #{tradingRecordType,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordPrice != null">
+        #{tradingRecordPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="tradingRecordStatus != null">
+        #{tradingRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordDes != null">
+        #{tradingRecordDes,jdbcType=VARCHAR},
+      </if>
+      <if test="tradingRecordBill != null">
+        #{tradingRecordBill,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null">
+        #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradingRecordTime != null">
+        #{tradingRecordTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.TradingRecord">
+    update trading_record
+    <set>
+      <if test="tradingRecordUserId != null">
+        trading_record_user_id = #{tradingRecordUserId,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordType != null">
+        trading_record_type = #{tradingRecordType,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordPrice != null">
+        trading_record_price = #{tradingRecordPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="tradingRecordStatus != null">
+        trading_record_status = #{tradingRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradingRecordDes != null">
+        trading_record_des = #{tradingRecordDes,jdbcType=VARCHAR},
+      </if>
+      <if test="tradingRecordBill != null">
+        trading_record_bill = #{tradingRecordBill,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null">
+        transaction_id = #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradingRecordTime != null">
+        trading_record_time = #{tradingRecordTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where trading_record_id = #{tradingRecordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.TradingRecord">
+    update trading_record
+    set trading_record_user_id = #{tradingRecordUserId,jdbcType=INTEGER},
+      trading_record_type = #{tradingRecordType,jdbcType=INTEGER},
+      trading_record_price = #{tradingRecordPrice,jdbcType=DOUBLE},
+      trading_record_status = #{tradingRecordStatus,jdbcType=INTEGER},
+      trading_record_des = #{tradingRecordDes,jdbcType=VARCHAR},
+      trading_record_bill = #{tradingRecordBill,jdbcType=VARCHAR},
+      transaction_id = #{transactionId,jdbcType=VARCHAR},
+      trading_record_time = #{tradingRecordTime,jdbcType=VARCHAR}
+    where trading_record_id = #{tradingRecordId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.TradingRecord" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from trading_record
+    where 1=1
+    <if test="tradingRecordId != null">
+      and trading_record_id = #{tradingRecordId,jdbcType=INTEGER}
+    </if>
+    <if test="tradingRecordUserId != null">
+      and trading_record_user_id = #{tradingRecordUserId,jdbcType=INTEGER}
+    </if>
+    <if test="tradingRecordType != null">
+      and trading_record_type = #{tradingRecordType,jdbcType=Integer}
+    </if>
+    <if test="tradingRecordPrice != null">
+      and trading_record_price = #{tradingRecordPrice,jdbcType=Double}
+    </if>
+    <if test="tradingRecordStatus != null">
+      and trading_record_status = #{tradingRecordStatus,jdbcType=Integer}
+    </if>
+    <if test="transactionId != null">
+      and transaction_id = #{transactionId,jdbcType=Integer}
+    </if>
+    <if test="tradingRecordTime != null">
+      and trading_record_time  like CONCAT(CONCAT('%', #{tradingRecordTime}), '%')
+    </if>
+  </select>
+  
+</mapper>

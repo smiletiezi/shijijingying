@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.ProductDiscountDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.ProductDiscount">
+    <id column="discount_id" jdbcType="INTEGER" property="discountId" />
+    <result column="discount_sum" jdbcType="INTEGER" property="discountSum" />
+    <result column="discount_name" jdbcType="VARCHAR" property="discountName" />
+    <result column="discount_remark" jdbcType="DOUBLE" property="discountRemark" />
+    <result column="discount_type" jdbcType="VARCHAR" property="discountType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    discount_id,discount_sum,discount_name,discount_remark,discount_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_discount
+    where discount_id = #{discountId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product_discount
+    where discount_id = #{discountId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.ProductDiscount">
+    insert into product_discount (discount_id,discount_sum,discount_name,discount_remark,discount_type)
+    values (#{discountId,jdbcType=INTEGER},
+               #{discountSum,jdbcType=INTEGER},
+               #{discountName,jdbcType=VARCHAR}, 
+               #{discountRemark,jdbcType=DOUBLE},
+               #{discountType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.ProductDiscount">
+    insert into product_discount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="discountId != null">
+        discount_id,
+      </if>
+      <if test="discountSum != null">
+        discount_sum,
+      </if>
+      <if test="discountName != null">
+        discount_name,
+      </if>
+      <if test="discountRemark != null">
+        discount_remark,
+      </if>
+      <if test="discountType != null">
+        discount_type
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="discountId != null">
+       #{discountId,jdbcType=INTEGER},
+      </if>
+      <if test="discountSum != null">
+       #{discountSum,jdbcType=INTEGER},
+      </if>
+      <if test="discountName != null">
+        #{discountName,jdbcType=VARCHAR},
+      </if>
+      <if test="discountRemark != null">
+        #{discountRemark,jdbcType=DOUBLE},
+      </if>
+      <if test="discountType != null">
+       #{discountType,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.ProductDiscount">
+    update product_discount
+    <set>
+      <if test="discountId != null">
+        discount_id = #{discountId,jdbcType=INTEGER},
+      </if>
+      <if test="discountSum != null">
+        discount_sum = #{discountSum,jdbcType=INTEGER},
+      </if>
+      <if test="discountName != null">
+        discount_name = #{discountName,jdbcType=VARCHAR},
+      </if>
+      <if test="discountRemark != null">
+        discount_remark=#{discountRemark,jdbcType=DOUBLE},
+      </if>
+      <if test="discountType != null">
+        discount_type = #{discountType,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where discount_id = #{discountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.py.shijijingying.entity.ProductDiscount">
+    update product_discount
+    set discount_id = #{discountId,jdbcType=INTEGER},
+    discount_sum = #{discountSum,jdbcType=INTEGER},
+     discount_name = #{discountName,jdbcType=VARCHAR},
+      discount_remark=#{discountRemark,jdbcType=DOUBLE},
+      discount_type = #{discountType,jdbcType=VARCHAR}
+    where discount_id = #{discountId,jdbcType=INTEGER}
+  </update>
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.ProductDiscount" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from product_discount
+    where 1=1
+    	<if test="discountId != null">
+        and discount_id = #{discountId,jdbcType=INTEGER}
+      </if>
+      <if test="discountSum != null">
+        and discount_sum = #{discountSum,jdbcType=INTEGER}
+      </if>
+      <if test="discountName != null">
+       and  discount_name = #{discountName,jdbcType=VARCHAR}
+      </if>
+      <if test="discountRemark != null">
+        and discount_remark=#{discountRemark,jdbcType=DOUBLE}
+      </if>
+      <if test="discountType != null">
+       and discount_type = #{discountType,jdbcType=VARCHAR}
+      </if>
+      order by discount_id desc
+  </select>
+  <select id="selectByList" resultMap="BaseResultMap">
+    select * from product_discount where discount_id in
+        <foreach collection="list" item="dramaId" open="(" close=")" separator=",">
+             #{dramaId}
+       </foreach>
+</select>
+
+<select id="selectByNum" parameterType="com.py.shijijingying.entity.ProductDiscount" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from product_discount
+    where 1=1
+    	<if test="discountId != null">
+        and discount_id = #{discountId,jdbcType=INTEGER}
+      </if>
+      <if test="discountSum != null">
+        and discount_sum <![CDATA[ <= ]]> #{discountSum,jdbcType=INTEGER}
+      </if>
+      <if test="discountName != null">
+       and  discount_name = #{discountName,jdbcType=VARCHAR}
+      </if>
+      <if test="discountRemark != null">
+        and discount_remark=#{discountRemark,jdbcType=DOUBLE}
+      </if>
+      <if test="discountType != null">
+       and discount_type = #{discountType,jdbcType=VARCHAR}
+      </if>
+      order by discount_sum desc
+  </select>
+</mapper>

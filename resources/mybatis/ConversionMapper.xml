@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.py.shijijingying.dao.ConversioneDao">
+  <resultMap id="BaseResultMap" type="com.py.shijijingying.entity.Conversione">
+    <id column="conversion_id" jdbcType="INTEGER" property="conversionId" />
+    <result column="voucher" jdbcType="DOUBLE" property="voucher" />
+    <result column="draw" jdbcType="DOUBLE" property="draw" />
+    <result column="probability" jdbcType="DOUBLE" property="probability" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    conversion_id,voucher,draw,probability,remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from conversion
+    where conversion_id = #{conversionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from conversion
+    where conversion_id = #{conversionId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="tradingRecordId" parameterType="com.py.shijijingying.entity.Conversione">
+    insert into conversion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conversionId != null">
+        conversion_id,
+      </if>
+      <if test="voucher != null">
+        voucher,
+      </if>
+      <if test="draw != null">
+        draw,
+      </if>
+      <if test="probability != null">
+        probability,
+      </if>
+      <if test="remark != null">
+        remark
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conversionId != null">
+        #{conversionId,jdbcType=INTEGER},
+      </if>
+      <if test="voucher != null">
+        #{voucher,jdbcType=DOUBLE},
+      </if>
+      <if test="draw != null">
+        #{draw,jdbcType=DOUBLE},
+      </if>
+      <if test="probability != null">
+        #{probability,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.py.shijijingying.entity.Conversione">
+    update conversion
+    <set>
+      <if test="conversionId != null">
+       conversion_id= #{conversionId,jdbcType=INTEGER},
+      </if>
+      <if test="voucher != null">
+       voucher= #{voucher,jdbcType=DOUBLE},
+      </if>
+      <if test="draw != null">
+        draw=#{draw,jdbcType=DOUBLE},
+      </if>
+      <if test="probability != null">
+        probability=#{probability,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null">
+       remark= #{remark,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where conversion_id = #{conversionId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectByExample" parameterType="com.py.shijijingying.entity.Conversione" resultMap="BaseResultMap">
+    select
+  	<include refid="Base_Column_List" />
+    from conversion
+    where 1=1
+      <if test="conversionId != null">
+       and conversion_id= #{conversionId,jdbcType=INTEGER}
+      </if>
+      <if test="voucher != null">
+       and voucher= #{voucher,jdbcType=DOUBLE}
+      </if>
+      <if test="draw != null">
+       and  draw=#{draw,jdbcType=DOUBLE}
+      </if>
+      <if test="probability != null">
+       and  probability=#{probability,jdbcType=DOUBLE}
+      </if>
+      <if test="remark != null">
+      and  remark= #{remark,jdbcType=VARCHAR}
+      </if>
+      order by conversion_id desc
+  </select>
+  
+</mapper>

@@ -1,0 +1,43 @@
+package com.py.shijijingying.utils;
+
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.profile.IClientProfile;
+
+public class SendSMSUtil {
+	  public static final String COMMON_TEMPLATE = "SMS_147201363";//验证码模板
+	  public static final String COMMON_TEMPLATE_UPDATE = "SMS_130015016";//验证码模板_修改
+	  static final String product = "Dysmsapi";
+	  static final String domain = "dysmsapi.aliyuncs.com";
+	  static final String accessKeyId = "LTAIUjx9If8jZYby";//
+	  static final String accessKeySecret = "w3Vufd9Q0Rsse7yAvF4RllKEfSZAB6";//
+	  public static Integer sendMSM(String phone,String tpl_id,String code) throws ClientException{
+
+	    System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
+	    System.setProperty("sun.net.client.defaultReadTimeout", "10000");
+	    IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
+	    DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", "Dysmsapi", "dysmsapi.aliyuncs.com");
+	    IAcsClient acsClient = new DefaultAcsClient(profile);
+	    SendSmsRequest request = new SendSmsRequest();
+	    request.setPhoneNumbers(phone);
+	    request.setSignName("E棒棒");//签名
+	    request.setTemplateCode(tpl_id);
+	    request.setTemplateParam("{\"code\":\"" + code + "\"}");
+	    request.setOutId("yourOutId");
+	    SendSmsResponse sendSmsResponse = (SendSmsResponse)acsClient.getAcsResponse(request);
+	    System.out.println(sendSmsResponse.toString());
+	    boolean success = "OK".equals(sendSmsResponse.getCode());
+	     Integer type;
+		if(success){
+			type=1;
+		} else {
+			type=2;
+		}
+		return type;
+	}
+	  
+}

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hk.jzmb.dao.SysroleMapper">
+  <resultMap id="BaseResultMap" type="com.hk.jzmb.entity.Sysrole">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, permission, name, is_delete, create_user_id, create_time, update_user_id, update_time, 
+    remark, parent_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hk.jzmb.entity.Sysrole">
+    insert into sys_role (id, permission, name, 
+      is_delete, create_user_id, create_time, 
+      update_user_id, update_time, remark, 
+      parent_id)
+    values (#{id,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=INTEGER}, #{createUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hk.jzmb.entity.Sysrole" useGeneratedKeys="true" keyProperty="id">
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hk.jzmb.entity.Sysrole">
+    update sys_role
+    <set>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hk.jzmb.entity.Sysrole">
+    update sys_role
+    set permission = #{permission,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+    <select id="selectRoleListAndName" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where is_delete = 0 and  permission != 'superadmin'
+    <if test="name != null and name !='' ">
+    	and name like concat('%',#{name},'%')
+    </if>
+
+  </select>
+  
+	 <select id="selectAllRole"  resultMap="BaseResultMap">
+	    SELECT
+		      id,
+			  name,
+			  parent_id
+		FROM
+			sys_role
+		WHERE
+			is_delete = 0
+		and permission!='superadmin'
+	 </select>
+  
+	 <!-- 根据用户id 查询角色下级用户  -->
+  <select id="selectUserIdRole"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT
+	<include refid="Base_Column_List" />
+	FROM
+		sys_role 
+	WHERE
+		remark LIKE CONCAT( '%', ( SELECT role_id FROM sys_role_user WHERE user_id =${userId} ), '%' ) 
+		AND is_delete =0
+  </select>
+  
+  <!-- 根据用户id 查询角色下级用户  name 模糊查询 -->
+  <select id="selectUserIdRoleByName" parameterType="java.util.Map" resultMap="BaseResultMap">
+   SELECT
+	<include refid="Base_Column_List" />
+	FROM
+		sys_role 
+	WHERE
+		remark LIKE CONCAT( '%', ( SELECT role_id FROM sys_role_user WHERE user_id = ${userId} ), '%' ) 
+		AND is_delete =0  and  permission != 'superadmin'
+    <if test="name != null and name !='' ">
+    	and name like concat('%',#{name},'%')
+    </if>
+  </select>
+  
+  <select id="selectByUseridRole" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	 SELECT
+		t1.id,
+		t1.NAME,
+		t1.remark
+	FROM
+		sys_role t1
+		LEFT JOIN sys_role_user t2 ON t2.role_id = t1.id 
+	WHERE
+		t2.user_id = #{userId}
+		AND t1.is_delete =0
+  </select>
+  
+  
+</mapper>
